@@ -1,6 +1,9 @@
 -*- org -*-
 
 * TODO Fix scroll shadow
+* TODO List should have same spacing as blockquotes
+  Numbered and bulleted lists should have the number/bullet have the same
+  horizontal spacing as the left (colored) border of the blockquote.
 * TODO On big screen: Put tables-of-content in sidebar
 * TODO When scrolling down: Show scroll up button
 * TODO Add <section> tags

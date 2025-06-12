@@ -2,7 +2,7 @@
 <link rel=stylesheet href=www/nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-06-12T13:29:34+02:00
+Updated: 2025-06-12T18:54:56+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -10,10 +10,14 @@ Author: zrajm
 
 # HTML-Scented Markdown
 
-> Sometimes I put little articles of text out on the internet (like this one).
-> When I do, I use a special file format.---Here's what that looks like.
+> A rough outline of the simple "format" I use to write simple web articles
+> (like this one). It uses Markdown (to simplify writing and proofreading). It
+> is rendered into HTML by the browser (to avoid a build step). And it tries to
+> look nice, even for users without Javascript.
 
-<toc heading=Contents class=toc>
+<toc heading=Contents class=toc upto=2>
+
+-------------------------------------------------------------------------------
 
 I often toss together a simple page in order to explore a topic, think about,
 or design a thing. I cannot be bothered by details when I'm writing these
@@ -24,12 +28,10 @@ A while back I decided to systematize my earlier (and future) scribblings and
 collect them in one spot. That spot is here ([zrajm.org]), and the system is
 one of *laziness, impatience and hubris.*---I simply toss whatever meandering
 thought crosses my mind into a text file, *[that isn't really a text
-file][Tastes Like Markdow],* throw it onto the garbage heap that is the
+file](#tastes-like-markdown),* throw it onto the garbage heap that is the
 internet, and hope something good come of it. And here all you little trash
 pandas can dig it up.
 
-
-[Smells Like HTML]: #smells-like-html
 
 # Smells Like HTML
 
@@ -53,8 +55,6 @@ produce a pretty document for you:
 But the meat of the file? Yeah, that's ... *different.*
 
 
-[Tastes Like Markdow]: #tastes-like-markdown
-
 # Tastes Like Markdown
 
 While the page you're currently looking at smells HTML to your browser, the
@@ -62,7 +62,7 @@ human story is quite different. (To have look at the source, press **Ctrl+U**,
 or **⌘U** on Mac.) However, the HTML shtick is just *pretense.*
 
 If you peel off the skin and take a bite, you'll notice that this file tastes
-rather like plain text. The meat of the file is in [markdown] format. This is
+rather like plain text. The meat of the file is in [Markdown] format. This is
 plain text *with a few extra quirks.* It reads pretty much like an old-fashion
 email, or something written on a typewriter in the seventies.
 
@@ -122,7 +122,7 @@ style="display:inline-block">tatu</span> variabilis semper crescis aut
 decrescis vita detestabilis nunc obdurat et tunc curat ludo mentis aciem.</div>
 
 
-# Fonts
+## Fonts
 
 I haven't quite settled on this yet.
 
@@ -148,21 +148,25 @@ inspiration.
 * [Matt Smith]—Contains a lot of bite-sized snippets on CSS and Javascript
   design. (Somewhat cumbersome to navigate.)
 
-## List of Frameworks
+
+### List of Frameworks
 
 These are websites which have lists of CSS:s to download. I'm always looking
 for *uncomplicated*—solutions that doesn't require compiling, makefiles or
 suchlike, only plain CSS.
 
-Minimal requirements for me include *dark mode.*
+Minimal requirements for me include: *dark mode,* and *looking great on
+mobile.*
 
 * [Awesome CSS Frameworks]—Github README lists a bunch of different CSS
   frameworks.
 * [CSS Bed]—List of classless CSS files, with an interface to quickly look at
   them.
 * [MVP.css]—One minimalist CSS.
-* [Water.css]
+* [Water.css]—Another minimal classless CSS with support for dark mode & and
+  mobile.
 
+-------------------------------------------------------------------------------
 
 [Awesome CSS Frameworks]: https://github.com/troxler/awesome-css-frameworks
 [Baremark]: https://zrajm.org/baremark/ "Baremark"

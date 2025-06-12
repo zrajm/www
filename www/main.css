@@ -18,7 +18,7 @@ html {
   --indent: 1.25rem;
   --leading: 1.75;
   --linefg: #888a; /* for lines: <hr>, <table> etc. */
-  --line-width: 2px;
+  --line-width: 1px;
   --pagefg: #000;
   --pagebg: #fff;
   --codebg: #eee;
@@ -84,7 +84,7 @@ ul.toc {
   margin: 0;
   columns: calc(var(--indent) * 10) auto;
   column-gap: calc(var(--indent) * 2);
-  column-rule: 2px solid var(--linefg);
+  column-rule: var(--line-width) solid var(--linefg);
 }
 /* Elements with blank line above/below. */
 blockquote, footer, hr, ol, pre, table, ul {
@@ -229,7 +229,7 @@ hr {
   position: relative;
   overflow: visible;
   border: 0;
-  height: 2px;
+  height: var(--line-width);
   --break: calc(var(--indent) * 3.5); /* width of '* * *' string */
   background: linear-gradient(
     90deg,
@@ -244,7 +244,7 @@ hr {
     text-align: center;
     content: "* * *";
     font-size: 120%;
-    transform: translateY(-.75em);
+    transform: translateY(calc(-.775em + (var(--line-width) / 2)));
   }
 }
 /** Checkbox **/
