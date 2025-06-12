@@ -1,0 +1,185 @@
+<!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
+<link rel=stylesheet href=www/nojs.css><textarea disabled>
+
+Created: 2025-06-10T23:39:04+02:00
+Updated: 2025-06-12T13:29:34+02:00
+License: CC BY-NC-SA (text), GPLv2 (code).
+Favicon: /www/favicon.svg
+Author: zrajm
+
+
+# HTML-Scented Markdown
+
+> Sometimes I put little articles of text out on the internet (like this one).
+> When I do, I use a special file format.---Here's what that looks like.
+
+<toc heading=Contents class=toc>
+
+I often toss together a simple page in order to explore a topic, think about,
+or design a thing. I cannot be bothered by details when I'm writing these
+(because that's a surefire way to get me distracted). Five levels down in that
+rabbit hole lies this web page.
+
+A while back I decided to systematize my earlier (and future) scribblings and
+collect them in one spot. That spot is here ([zrajm.org]), and the system is
+one of *laziness, impatience and hubris.*---I simply toss whatever meandering
+thought crosses my mind into a text file, *[that isn't really a text
+file][Tastes Like Markdow],* throw it onto the garbage heap that is the
+internet, and hope something good come of it. And here all you little trash
+pandas can dig it up.
+
+
+[Smells Like HTML]: #smells-like-html
+
+# Smells Like HTML
+
+The file into which I write these words smells like HTML---it has an `.html`
+file extension, and contains *juust enough* HTML-smelling preamble to convince
+your browser that it can be loaded:
+
+```
+<!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
+<link rel=stylesheet href=www/nojs.css><textarea disabled>
+```
+
+At the very end you'll also find a little chunk of line noise. The task of this
+line is to invoke a Javascript incantation that allows your machine friend to
+produce a pretty document for you:
+
+```
+&lt;/textarea><script type=module src=www/main.js></script>
+```
+
+But the meat of the file? Yeah, that's ... *different.*
+
+
+[Tastes Like Markdow]: #tastes-like-markdown
+
+# Tastes Like Markdown
+
+While the page you're currently looking at smells HTML to your browser, the
+human story is quite different. (To have look at the source, press **Ctrl+U**,
+or **⌘U** on Mac.) However, the HTML shtick is just *pretense.*
+
+If you peel off the skin and take a bite, you'll notice that this file tastes
+rather like plain text. The meat of the file is in [markdown] format. This is
+plain text *with a few extra quirks.* It reads pretty much like an old-fashion
+email, or something written on a typewriter in the seventies.
+
+The benefit of this is that it is readable *like text,* reading and
+proofreading is a breeze.
+
+
+# Transubstantiated by Javascript
+
+Between the Markdown and the HTML lies a layer of magic.
+
+Initially I was using [Jquery] (for DOM manipulation), and [Showdown] (for
+Markdown handling), but even in their slimmed down versions they're pretty
+hefty and contain a lot of stuff I never used. So eventually I came to write my
+own:
+
+* [Baremark]---A minimal Markdown parser.
+* [Elemental]---For DOM manipulation (replacing Jquery).
+* [Quotecurl]---For pretty quotes and dashes.
+
+And the script [`main.js`](www/main.js) ties it all together.
+
+
+# Enlivened by CSS
+
+* [`nojs.css`](www/nojs.css)---Very simple stylesheet for when Javascript isn't
+  available. Its only job is to render the raw Markdown fairly readable, and to
+  display a "No Javascipt" warning. (This stylesheet is unloaded as soon as
+  Javascript is up and running.)
+* [`main.css`](www/main.css)---A stylesheet for rendering HTML elements. It
+  should be minimal, but also mobile friendly, and be able to handle dark mode,
+  plus all standard HTML tags. It should also be pretty. :)
+
+
+## CSS Reset
+
+My `main.css` file starts with Matt Smith's [CSS reset for minimalists], with a
+tiny tweak.
+
+```
+html { box-sizing: border-box }
+*, :before, :after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  text-indent: 0;
+}
+```
+
+I've added a line to stop the inheritance of `text-indent`, which otherwise
+would be inserted into child *block* elements. Like this (extra space in front
+of "tatu"):
+
+<style>.dWrfp {text-indent:2em;outline:1px solid currentColor}</style> <p
+class=dWrfp>Velut luna <span class=dWrfp
+style="display:inline-block">tatu</span> variabilis semper crescis aut
+decrescis vita detestabilis nunc obdurat et tunc curat ludo mentis aciem.</div>
+
+
+# Fonts
+
+I haven't quite settled on this yet.
+
+I do a lot of weird stuff with writing systems. (Like [Swedish sign language
+transcription](/teckentranskription/intro.html), or [Canadian Aboriginal
+Syllabics](/toki-pona-syllabics/), or even [ASLwrite](/teckenskrift/).) And so,
+whatever I finally settle for will have to be able to handle this.
+
+
+## Inspiration for CSS
+
+I'm sorta constantly trying to figure out what a good web page design should
+be. Like with most other things I'm searching for some kind of (technological)
+minimalism. Something that's easy to move between servers, and which doesn't
+have a lot of dependencies. Here's a list of stuff that I have looked to for
+inspiration.
+
+* [Just Enough CSS for a Blog]—Design philosophy. How to create a CSS for
+  pretty-looking blog.
+* [Web Compendium: CSS: Methodologies]—Page an various approaches for CSS
+  design.
+* [Web Compendium: CSS]—Describes various CSS related APIs and stuff.
+* [Matt Smith]—Contains a lot of bite-sized snippets on CSS and Javascript
+  design. (Somewhat cumbersome to navigate.)
+
+## List of Frameworks
+
+These are websites which have lists of CSS:s to download. I'm always looking
+for *uncomplicated*—solutions that doesn't require compiling, makefiles or
+suchlike, only plain CSS.
+
+Minimal requirements for me include *dark mode.*
+
+* [Awesome CSS Frameworks]—Github README lists a bunch of different CSS
+  frameworks.
+* [CSS Bed]—List of classless CSS files, with an interface to quickly look at
+  them.
+* [MVP.css]—One minimalist CSS.
+* [Water.css]
+
+
+[Awesome CSS Frameworks]: https://github.com/troxler/awesome-css-frameworks
+[Baremark]: https://zrajm.org/baremark/ "Baremark"
+[CSS Bed]: https://www.cssbed.com/
+[CSS reset for minimalists]: https://allthingssmitty.com/2017/01/09/css-reset-for-minimalists/
+[Elemental]: https://zrajm.org/elemental/ "Elemental"
+[Jquery]: https://jquery.com/ "Jquery"
+[Just Enough CSS for a Blog]: https://niklasfasching.de/posts/just-enough-css/
+[MVP.css]: https://andybrewer.github.io/mvp/ "MVP.css — A minimalist stylesheet for HTML elements"
+[Markdown]: https://daringfireball.net/projects/markdown/
+[Matt Smith]: https://allthingssmitty.com/
+[Quotecurl]: https://zrajm.org/quotecurl/
+[Showdown]: https://showdownjs.com/ "Showdown"
+[Water.css]: https://watercss.kognise.dev/
+[Web Compendium: CSS: Methodologies]: https://frontaid.ch/web/css/#methodologies
+[Web Compendium: CSS]: https://frontaid.ch/web/css/
+[zrajm.org]: https://zrajm.org/
+
+</textarea><script type=module src=www/main.js></script>
+<!--[eof]-->

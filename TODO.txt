@@ -1,0 +1,26 @@
+-*- org -*-
+
+* TODO Fix scroll shadow
+* TODO On big screen: Put tables-of-content in sidebar
+* TODO When scrolling down: Show scroll up button
+* TODO Add <section> tags
+  For each heading. Also heading 'id' attribute should be moved to the
+  <section> tag.
+* TODO URL comments in CSS should be in docs
+  The origin of various little tricks are given in CSS comments, but they
+  should be in the docs file.
+* TODO Test/verify Chrome scrollbar
+* TODO References to `.img` in CSS?
+  Possibly replace with `:has(img:only-child)`? Nope, won't work. `:only-child`
+  matches as long as it is the only subelement, however, other text does not
+  affect the match.
+
+  E.g. `<td>lext <a href="...">link</a</td>` would be matched by td `a:only-link`.
+* FINISHED
+** DONE Weed out vertical rhythm stuff
+   CLOSED: [2025-06-12 Thu 11:06]
+   Remove the DEBUG stuff.
+   + Remove `getBaselineFromTop()`
+   + Remove `getRhythm()`
+** TODO Finish writing rudimentary version of docs
+* [eof]
