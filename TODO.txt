@@ -1,5 +1,7 @@
 -*- org -*-
 
+* TODO Git commit hook verifying that date of 'Updated' header has changed
+* TODO `quotecurl()` should be invoked on 'title' attributes too
 * TODO Fix scroll shadow
 * TODO List should have same spacing as blockquotes
   Numbered and bulleted lists should have the number/bullet have the same
