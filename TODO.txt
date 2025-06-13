@@ -19,6 +19,24 @@
   affect the match.
 
   E.g. `<td>lext <a href="...">link</a</td>` would be matched by td `a:only-link`.
+* TODO Classes for indent modes
+  It should be possible to wrap (e.g. the paragraphs of a glossary) in
+  something like `<div class=hanging>` to get hanging indent for those
+  paragraphs. Specifying `<p class=hanging>` for an individual paragraph should
+  also work.
+
+  What should the modes be called?
+
+  Paragraph mode: There are three modes, controlled by the following HTML
+  attributes. Is inherited, so you can wrap any number of paragraphs with a
+  <div hanging>.
+
+    'book'    -- separate paragraphs by indenting first line, except for first
+                 paragraph (default)
+    'blank'   -- separated by blank lines
+    'hanging' -- hanging indent (default in tables)
+
+  Should text in tables be indented according to the current indent mode?
 * FINISHED
 ** DONE Weed out vertical rhythm stuff
    CLOSED: [2025-06-12 Thu 11:06]
