@@ -66,13 +66,13 @@ sub, sup, a[href^="#fn"] {
   vertical-align: baseline;
 }
 /********************/
-p { margin-top: 1rem }
+p { margin-top: calc(var(--leading) * .5rem) }
 p + p, p.indented {
   margin-top: 0;
   text-indent: var(--indent);
 }
 p:empty + p {
-  margin-top: 1rem;
+  margin-top: calc(var(--leading) * .5rem);
   text-indent: 0;
 }
 ul { list-style-type: "⚫︎ " }
@@ -87,9 +87,13 @@ ul.toc {
   column-rule: var(--line-width) solid var(--linefg);
 }
 /* Elements with blank line above/below. */
-blockquote, footer, hr, ol, pre, table, ul {
-  margin-top   : calc(var(--leading) * 1rem);
-  margin-bottom: calc(var(--leading) * 1rem);
+blockquote, footer, ol, pre, table, ul {
+  margin-top   : calc(var(--leading) * .5rem);
+  margin-bottom: calc(var(--leading) * .5rem);
+}
+hr {
+  margin-top   : calc(var(--leading) * 1.5rem);
+  margin-bottom: calc(var(--leading) * 1.5rem);
 }
 /* Indented elements. */
 blockquote, ol, ul { margin-left: var(--indent) }
