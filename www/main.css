@@ -66,14 +66,10 @@ sub, sup, a[href^="#fn"] {
   vertical-align: baseline;
 }
 /********************/
-p { margin-top: calc(var(--leading) * .5rem) }
-p + p, p.indented {
-  margin-top: 0;
-  text-indent: var(--indent);
-}
-p:empty + p {
-  margin-top: calc(var(--leading) * .5rem);
-  text-indent: 0;
+/* No space between paragraphs, indent 1st line. */
+p:not(:empty) {
+  &:has(+ p:not(:empty)) { margin-bottom: 0 }
+  &     + p:not(:empty)  { margin-top: 0; text-indent: var(--indent) }
 }
 ul { list-style-type: "⚫︎ " }
 /** Table-of-Contents **/
@@ -87,7 +83,7 @@ ul.toc {
   column-rule: var(--line-width) solid var(--linefg);
 }
 /* Elements with blank line above/below. */
-blockquote, footer, ol, pre, table, ul {
+blockquote, footer, ol, p, pre, table, ul {
   margin-top   : calc(var(--leading) * .5rem);
   margin-bottom: calc(var(--leading) * .5rem);
 }
