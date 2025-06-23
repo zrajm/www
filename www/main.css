@@ -242,6 +242,7 @@ hr {
     transparent   calc(50% + (var(--break) / 2)),
     var(--linefg) calc(50% + (var(--break) / 2)),
     var(--linefg));
+  color: var(--linefg);
   &:before {
     display: block;
     text-align: center;
