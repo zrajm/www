@@ -62,5 +62,15 @@
    CLOSED: [2025-06-23 Mon 16:06]
    When scrolling beyond the fold a scroll-to-top button should appear in the
    bottom right corner.
+** DONE Use `<p>` instead of `<h2>` for subtitle inside `<hgroup>`
+   CLOSED: [2025-06-24 Tue 01:44]
+   `<hgroup>` should not contain multiple headings, but only a single heading
+   with optional preceding or following `<p>` tags, so the way we previously
+   did this was wrong.
+
+   The `<hgroup>` HTML element represents a heading and related content. It
+   groups a single `<h1>`–`<h6>` element with one or more `<p>`.
+
+   https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hgroup
 ** TODO Finish writing rudimentary version of docs
 * [eof]

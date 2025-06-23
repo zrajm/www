@@ -191,7 +191,7 @@ function htmlTitle({title, author, created, updated, lang, titleId}) {
   return flatjoin('\n', [
     '<hgroup>',
     tmpl(`<h1${tmpl(' id="%"', quot(titleId))}>%</h1>`, title),
-    tmpl('<h2>%</h2>', [' ', [
+    tmpl('<p>%</p>', [' ', [
       tmpl('By %', author),
       tmpl('(<time>%</time>)', ['–', textDate(created, lang), textDate(updated, lang)])
     ]]),
