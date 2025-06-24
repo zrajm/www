@@ -1,8 +1,8 @@
 <!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
-<link rel=stylesheet href=www/nojs.css><textarea disabled>
+<link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-06-24T10:35:48+02:00
+Updated: 2025-06-24T11:01:27+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -69,6 +69,8 @@ email, or something written on a typewriter in the seventies.
 The benefit of this is that it is readable *like text,* reading and
 proofreading is a breeze.
 
+Here this template starts in earnest. See also [Page Template].
+
 
 # Transmogrified by Javascript
 
@@ -83,7 +85,7 @@ own:
 * [Elemental]---For DOM manipulation (replacing Jquery).
 * [Quotecurl]---For pretty quotes and dashes.
 
-The script [`main.js`](www/main.js) ties it all together.
+The script [`main.js`](main.js) ties it all together.
 
 
 ## Baremark → HTML
@@ -144,11 +146,11 @@ Document Outline Algorithm]").
 
 # Skinned by CSS
 
-* [`nojs.css`](www/nojs.css)---Very simple stylesheet for when Javascript isn't
+* [`nojs.css`](nojs.css)---Very simple stylesheet for when Javascript isn't
   available. Its only job is to render the raw Markdown fairly readable, and to
   display a "No Javascipt" warning. (This stylesheet is unloaded as soon as
   Javascript is up and running.)
-* [`main.css`](www/main.css)---A stylesheet for rendering HTML elements. It
+* [`main.css`](main.css)---A stylesheet for rendering HTML elements. It
   should be minimal, but also mobile friendly, and be able to handle dark mode,
   plus all standard HTML tags. It should also be pretty. :)
 
@@ -261,6 +263,7 @@ page:
 [Markdown]: https://daringfireball.net/projects/markdown/
 [Matt Smith]: https://allthingssmitty.com/
 [Old CSS, New CSS]: https://eev.ee/blog/2020/02/01/old-css-new-css/ "Fuzzy Notepad: Old CSS, New CSS "
+[Page Template]: https://zrajm.org/html-scented-markdown/template.html
 [Quotecurl]: https://zrajm.org/quotecurl/
 [Showdown]: https://showdownjs.com/ "Showdown"
 [Water.css]: https://watercss.kognise.dev/
@@ -282,5 +285,5 @@ page:
 [uncomment]: https://zrajm.org/baremark/?addon/uncomment.md "uncomment Docs"
 [zrajm.org]: https://zrajm.org/
 
-</textarea><script type=module src=www/main.js></script>
+</textarea><script type=module src=main.js></script>
 <!--[eof]-->
