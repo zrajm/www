@@ -21,9 +21,6 @@
   Numbered and bulleted lists should have the number/bullet have the same
   horizontal spacing as the left (colored) border of the blockquote.
 * TODO On big screen: Put tables-of-content in sidebar
-* TODO Add <section> tags
-  For each heading. Also heading 'id' attribute should be moved to the
-  <section> tag.
 * TODO URL comments in CSS should be in docs
   The origin of various little tricks are given in CSS comments, but they
   should be in the docs file.
@@ -72,5 +69,15 @@
    groups a single `<h1>`–`<h6>` element with one or more `<p>`.
 
    https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hgroup
+** DONE Wrap each chapter (heading + text) in `<div>`
+   CLOSED: [2025-06-24 Tue 05:59]
+   Wrap each heading & its content in a `<div>` tag, moving the `id` attribute
+   of the `<h#>` tag to the wrapping `<div>` instead. (This is so that a CSS
+   `:target` can hilite the entire section instead of just the heading.)
+
+   Originally the intent was to use `<section>` tags here, not `<div>` tags.
+   But the `<section>` is fraught with troubles in most browsers (it'll
+   currently modify the size of any `<h1>` inside of it, but also display a
+   deprecation warning in the Firefox developers console).
 ** TODO Finish writing rudimentary version of docs
 * [eof]
