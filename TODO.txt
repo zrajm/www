@@ -1,5 +1,13 @@
 -*- org -*-
 
+* TODO Put only `www` directory + template file in Git
+  Ideally one should be able to check the entirety of this repo out as a `www/`
+  directory, and then copy an empty `template.html` file from there to start a
+  new project.
+
+  In this repo there should also be a Git commit hook script available (which
+  is easily installable) which verifies that the `Update:` header has been
+  updated when committing an HTML file.
 * TODO Table-of-content: Use bullet list with lines(?)
   https://zrajm.org/baremark/
 * TODO Table-of-content: Hanging indent

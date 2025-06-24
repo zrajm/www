@@ -2,7 +2,7 @@
 <link rel=stylesheet href=www/nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-06-13T22:07:12+02:00
+Updated: 2025-06-24T10:08:05+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -83,7 +83,56 @@ own:
 * [Elemental]---For DOM manipulation (replacing Jquery).
 * [Quotecurl]---For pretty quotes and dashes.
 
-And the script [`main.js`](www/main.js) ties it all together.
+The script [`main.js`](www/main.js) ties it all together.
+
+
+## Baremark → HTML
+
+[Baremark] and [Quotecurl] are used to render the Markdown in HTML,
+additionally various [Baremark Addons] are also invoked to make to the page
+look all pretty.
+
+[Baremark Addons]: https://zrajm.org/baremark/#addons
+
+
+## Scroll Position Restoring
+
+Since the HTML of the page is generated rather than loaded, the browser will
+not reliably restore set scroll position for hash fragment URLs. To solve this
+hash location is reset after page load, if the current scroll position is at
+the top of the window. (The top-of-the-window limitation is to preserve the
+scroll position if the user reloads the page.)
+
+
+## Scroll-to-Top Button
+
+When scrolling down slightly beneath the fold, a scroll-to-top button will
+slide into position itself in the bottom right corner.
+
+Clicking the button will scroll to the top of the page, creating a new history
+event. To get back to where you came from, just click the history 'Back' (←)
+button.
+
+
+## Wrapping of Chapters
+
+Each heading (`<h1>`...`<h6>`) and their subsequent content (that is, each
+chapter), is wrapped in `<div>` tags, and the `id` attribute of the
+corresponding `<h#>` tag is moved to the wrapper.---This is done to allow a CSS
+`:target` selector to style the entire chapter.
+
+**Nota Bene:** The seemingly apt `<section>` tag is nousegenerally problematic, and
+is best avoided altogether in HTML documents, since it's use will affect the
+style of any contained `<h1>` tags (specifically font size), and also result in
+warnings being displayed in on Firefox developer's console.---The advice given
+by the [Mozilla page on `<section>`] is basically to never use it if any other
+tag can do the job instead. The `<section>` tag was part of a suggested HTML5
+*Document Outline* feature (now deprecated), which in practice was never
+implemented by browsers, and should therefore not be relied on ("[There Is No
+Document Outline Algorithm]").
+
+[Mozilla page on `<section>`]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section#usage_notes
+[There Is No Document Outline Algorithm]: https://adrianroselli.com/2016/08/there-is-no-document-outline-algorithm.html
 
 
 # Skinned by CSS
