@@ -84,7 +84,7 @@ blockquote, footer, ol, pre, table, ul {
   margin-top   : calc(var(--leading) * .5rem);
   margin-bottom: calc(var(--leading) * .5rem);
 }
-hr {
+figure, hr {
   margin-top   : calc(var(--leading) * 1.5rem);
   margin-bottom: calc(var(--leading) * 1.5rem);
 }
@@ -226,6 +226,12 @@ button {
   line-height: 1;
   font: inherit;
   cursor: pointer;
+}
+figure {
+  text-align: center;
+  border: var(--line-width) solid var(--linefg);
+  width: fit-content;
+  padding: .5rem;
 }
 hr {
   position: relative;
