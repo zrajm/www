@@ -1,0 +1,68 @@
+/*-*- css-indent-offset: 2 -*-*/
+/* Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code). */
+
+/* If a paragraph inherits a value, then the inherited value is the same for
+   all sibling paragraphs. */
+
+html { --not-book-first: 0 }
+
+/* Indent 1st line in book paragraph (if following another book paragraph). */
+p:not(.blank,.hanging) + p {
+  --not-book-first: 1;
+  --not-book-keep: calc(1 - var(--book-keep));
+  --not-hanging-keep: calc(1 - var(--hanging-keep));
+  text-indent: calc(
+    (var(--indent) * var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
+    (var(--indent) * var(--not-hanging-keep) * -1)
+  );
+}
+
+/* Hanging indent. */
+p:not(.book,.blank) {
+  --not-book-keep: calc(1 - var(--book-keep));
+  --not-hanging-keep: calc(1 - var(--hanging-keep));
+  text-indent: calc(
+    (var(--indent) * var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
+    (var(--indent) * var(--not-hanging-keep) * -1)
+  );
+  padding-left: calc(var(--indent) * var(--not-hanging-keep));
+}
+
+/*****************************************************************************/
+
+html, .blank { --book-keep: 1; --hanging-keep: 1 }
+.book        { --book-keep: 0; --hanging-keep: 1 }
+.hanging     { --book-keep: 1; --hanging-keep: 0 }
+
+/* FIXME: what about first & last paragraphs top & bottom? */
+p {
+  margin-top: calc(1rem * var(--book-keep) * var(--hanging-keep));
+  margin-bottom: calc(1rem * var(--book-keep) * var(--hanging-keep));
+  &:where(:has(+ p)) {
+    margin-bottom: calc(1rem * var(--book-keep) * var(--hanging-keep));
+  }
+  &:where(+ p)  {
+    margin-top: calc(1rem * var(--book-keep) * var(--hanging-keep));
+  }
+}
+
+p.book {
+  margin-top: calc(1rem * var(--book-keep));
+  margin-bottom: calc(1rem * var(--book-keep));
+  /*after*/
+  & + p { margin-top: calc(1rem * var(--book-keep)) }
+}
+p {
+  &:has(+ p.book) { margin-bottom: calc(1rem * var(--book-keep)) }
+}
+
+p.hanging {
+  margin-top: calc(1rem * var(--hanging-keep));
+  margin-bottom: calc(1rem * var(--hanging-keep));
+  & + p { margin-top: calc(1rem * var(--hanging-keep)) }
+}
+p {
+  &:has(+ p.hanging) { margin-bottom: calc(1rem * var(--hanging-keep)) }
+}
+
+/*[eof]*/

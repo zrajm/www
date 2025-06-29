@@ -1,5 +1,9 @@
 -*- org -*-
 
+* [0/2] Cleanup indentation mode CSS
+  Merge into main CSS, do the fixes mentioned in the CSS code.
+** TODO Call variables '--book' and '--hanging' instead?
+** TODO Document the metadata stuff!
 * TODO Table-of-content: Use bullet list with lines(?)
   https://zrajm.org/baremark/
 * TODO Table-of-content: Hanging indent

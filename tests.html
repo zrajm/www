@@ -1,0 +1,173 @@
+<!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
+<link rel=stylesheet href=nojs.css><textarea disabled>
+
+Created: 2025-06-29T17:05:40+02:00
+Updated: 2025-06-29T17:05:40+02:00
+License: CC BY-NC-SA (text), GPLv2 (code).
+Favicon: /www/favicon.svg
+Author: zrajm
+
+# HTML-Scented Markdown: Indentation Test Cases
+
+> These are some test cases for the somewhat complicated indentation mode used
+> by the CSS.
+
+-------------------------------------------------------------------------------
+
+# Case 1: Collapse (two 'book', inside 'hanging › blank')
+
+<div class="hanging">
+  <div class="blank">
+    <p class="book">book literal</p>
+    <p class="book">book literal</p>
+  </div>
+</div>
+
+# Case 1½: Collapse (two 'hanging', inside 'hanging › blank')
+
+<div class="hanging">
+  <div class="blank">
+    <p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+    <p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+  </div>
+</div>
+
+# Case 2: No Collapse (two 'blank')
+
+<div class="hanging">
+  <div class="blank">
+    <p>blank inherited</p>
+    <p>blank inherited</p>
+  </div>
+</div>
+
+# Case 3 Collapse (two 'book')
+
+<div class="book">
+  <p class="book">book literal</p>
+  <p>book inherited</p>
+</div>
+
+# Case 4: No Collapse ('book' + 'hanging')
+
+<div class="book">
+  <p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+  <p>book inherited</p>
+</div>
+
+# Case 5: Collapse (two hanging)
+
+<div class="hanging">
+  <p>hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited</p>
+  <p>hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited</p>
+</div>
+
+# Case 6: No Collapse (two 'blank')
+
+<div class="blank">
+  <p>blank inherited</p>
+  <p>blank inherited</p>
+</div>
+
+# Case 7: Collapse (two 'hanging')
+
+<p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+<p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+
+# Case 8: Collapse (two 'book')
+
+<p class="book">book literal</p>
+<p class="book">book literal</p>
+
+# Case 9: No Collapse ('hanging' + 'book')
+
+<p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+<p class="book">book literal</p>
+
+# Case 10: No Collapse (two 'blank')
+
+<p class="blank">blank literal</p>
+<p class="blank">blank literal</p>
+
+# Case 11: No Collapse (two 'blank')
+
+<div class="blank">
+  <p>blank inherited</p>
+  <p>blank inherited</p>
+</div>
+
+# Case 11: No Collapse (two 'blank')
+
+<div class="blank">
+  <p class="blank">blank literal</p>
+  <p>blank inherited</p>
+</div>
+
+# Case 12: No Collapse (unless 'book' is set in root)
+
+<div class="random">
+  <p>'random' inherited</p>
+  <p>'random' inherited</p>
+</div>
+
+# Case 13: 1st 2 Collapse, last not
+
+<div class="book">
+  <p>book inherited</p>
+  <p>book inherited</p>
+  <p class="blank">blank literal</p>
+</div>
+
+# Case 14: No Collapse
+
+<div class="book">
+  <p>book inherited</p>
+  <div class="blank">
+    <p>blank inherited</p>
+    <p>blank inherited</p>
+  </div>
+  <p>blank literal</p>
+</div>
+
+# Case 15: Collapse (three 'book')
+
+<p class="book">book literal</p>
+<p class="book">book literal</p>
+<p class="book">book literal</p>
+
+# Case 15: Collapse (three 'book')
+
+<div class="book"
+  <p>book inherited</p>
+  <p class="book">book literal</p>
+  <p>book inherited</p>
+</div>
+
+# Case 15: No Collapse (different classes)
+
+<p class="book">book literal</p>
+<p class="blank">blank literal</p>
+<p class="book">book literal</p>
+
+# Case 12: No Collapse (unless 'book' is set in root)
+
+<p class="foo">'foo' literal</p>
+<p class="bar">'bar' literal</p>
+
+# Case 17: No Collapse
+
+<div class="hanging">
+  <p class="book">book literal</p>
+  <p>hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited hanging inherited</p>
+</div>
+
+# Case 18: No Collapse (different classes)
+
+<p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+<p class="book">book literal</p>
+<p class="hanging">hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal hanging literal</p>
+
+-------------------------------------------------------------------------------
+
+</textarea><script type=module src=main.js></script>
+<!--[eof]-->

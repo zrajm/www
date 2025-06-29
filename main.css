@@ -1,6 +1,8 @@
 /*-*- css-indent-offset: 2 -*-*/
 /* Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code). */
 
+@import "paragraphs.css";
+
 /* allthingssmitty.com/2017/01/09/css-reset-for-minimalists */
 html { box-sizing: border-box }
 *, :before, :after { box-sizing: inherit; padding: 0; margin: 0; text-indent: 0 }
@@ -66,12 +68,6 @@ sub, sup, a[href^="#fn"] {
   position: relative;
   vertical-align: baseline;
 }
-/********************/
-/* No space between paragraphs, indent 1st line. */
-p:not(:empty) {
-  &:has(+ p:not(:empty)) { margin-bottom: 0 }
-  &     + p:not(:empty)  { margin-top: 0; text-indent: var(--indent) }
-}
 ul { list-style-type: "⚫︎ " }
 /** Table-of-Contents **/
 ul.toc {
@@ -84,7 +80,7 @@ ul.toc {
   column-rule: var(--line-width) solid var(--linefg);
 }
 /* Elements with blank line above/below. */
-blockquote, footer, ol, p, pre, table, ul {
+blockquote, footer, ol, pre, table, ul {
   margin-top   : calc(var(--leading) * .5rem);
   margin-bottom: calc(var(--leading) * .5rem);
 }

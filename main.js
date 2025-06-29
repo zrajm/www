@@ -61,6 +61,7 @@ function pageMain() {
 
   // Set some metadata defaults.
   const meta = (meta => ({
+    class   :              'book',          //   indent mode
     lang    :              'en-GB',         //   (UK locale has '1 May 2025'
     title   :              '[NO TITLE]',    //     instead of 'May 1, 2025')
     created : meta.date ?? '',
@@ -70,7 +71,7 @@ function pageMain() {
   }))(baremark.meta)                           // read from markdown
 
   $('html')
-    .attr({ lang: meta.lang })
+    .attr({ lang: meta.lang, class: meta.class })
     .append('<input id=darkmode type=checkbox>')
     .addClass(/\bDEBUG\b/i.test(location.search) ? 'DEBUG' : '')
 
