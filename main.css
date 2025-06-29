@@ -94,7 +94,7 @@ blockquote {
   border-left: calc(var(--indent) - .75rem) solid #8885;
   padding: 0 .75rem;
 }
-pre, tt {
+img, pre, tt {
   background: #aaa3;
   border: 1px solid #8885;
   border-radius: .125rem;
