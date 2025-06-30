@@ -11,20 +11,24 @@ p:not(.blank,.hanging) + p {
   --not-book-first: 1;
   --not-book-keep: calc(1 - var(--book-keep));
   --not-hanging-keep: calc(1 - var(--hanging-keep));
-  text-indent: calc(
-    (var(--indent) * var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
-    (var(--indent) * var(--not-hanging-keep) * -1)
-  );
+  text-indent: calc(var(--indent) * (
+    /* If 'book' AND not first paragraph: Positive indent. */
+    (var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
+    /* If 'hanging' negative indent. */
+    (var(--not-hanging-keep) * -1)
+  ));
 }
 
 /* Hanging indent. */
 p:not(.book,.blank) {
   --not-book-keep: calc(1 - var(--book-keep));
   --not-hanging-keep: calc(1 - var(--hanging-keep));
-  text-indent: calc(
-    (var(--indent) * var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
-    (var(--indent) * var(--not-hanging-keep) * -1)
-  );
+  text-indent: calc(var(--indent) * (
+    /* If 'book' AND not first paragraph: Positive indent. */
+    (var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
+    /* If 'hanging' negative indent. */
+    (var(--not-hanging-keep) * -1)
+  ));
   padding-left: calc(var(--indent) * var(--not-hanging-keep));
 }
 
