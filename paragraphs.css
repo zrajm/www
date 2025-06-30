@@ -4,16 +4,16 @@
 /* If a paragraph inherits a value, then the inherited value is the same for
    all sibling paragraphs. */
 
-html { --not-book-first: 0 }
+html { --is-nonfirst-p: 0 } /* for 'text-indent' for 'book' */
 
 /* Indent 1st line in book paragraph (if following another book paragraph). */
 p:not(.blank,.hanging) + p {
-  --not-book-first: 1;
+  --is-nonfirst-p: 1;
   --not-book-keep: calc(1 - var(--book-keep));
   --not-hanging-keep: calc(1 - var(--hanging-keep));
   text-indent: calc(var(--indent) * (
     /* If 'book' AND not first paragraph: Positive indent. */
-    (var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
+    (var(--not-book-keep) * var(--is-nonfirst-p)) +       /* one of these is zero */
     /* If 'hanging' negative indent. */
     (var(--not-hanging-keep) * -1)
   ));
@@ -25,7 +25,7 @@ p:not(.book,.blank) {
   --not-hanging-keep: calc(1 - var(--hanging-keep));
   text-indent: calc(var(--indent) * (
     /* If 'book' AND not first paragraph: Positive indent. */
-    (var(--not-book-keep) * var(--not-book-first)) +       /* one of these is zero */
+    (var(--not-book-keep) * var(--is-nonfirst-p)) +       /* one of these is zero */
     /* If 'hanging' negative indent. */
     (var(--not-hanging-keep) * -1)
   ));
