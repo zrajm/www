@@ -49,20 +49,15 @@ p {
 p.book {
   margin-top: calc(1rem * var(--book-keep));
   margin-bottom: calc(1rem * var(--book-keep));
-  /*after*/
   & + p { margin-top: calc(1rem * var(--book-keep)) }
 }
-p {
-  &:has(+ p.book) { margin-bottom: calc(1rem * var(--book-keep)) }
-}
+p:has(+ p.book) { margin-bottom: calc(1rem * var(--book-keep)) }
 
 p.hanging {
   margin-top: calc(1rem * var(--hanging-keep));
   margin-bottom: calc(1rem * var(--hanging-keep));
   & + p { margin-top: calc(1rem * var(--hanging-keep)) }
 }
-p {
-  &:has(+ p.hanging) { margin-bottom: calc(1rem * var(--hanging-keep)) }
-}
+p:has(+ p.hanging) { margin-bottom: calc(1rem * var(--hanging-keep)) }
 
 /*[eof]*/
