@@ -36,6 +36,8 @@ html, .blank { --book-keep: 1; --hanging-keep: 1 }
 
 /* FIXME: what about first & last paragraphs top & bottom? */
 p {
+  &:first-of-type { margin-top: 1rem }
+  &:last-of-type { margin-bottom: 1rem }
   margin-top: calc(1rem * var(--book-keep) * var(--hanging-keep));
   margin-bottom: calc(1rem * var(--book-keep) * var(--hanging-keep));
   &:where(:has(+ p)) {
@@ -47,6 +49,8 @@ p {
 }
 
 p.book {
+  &:first-of-type { margin-top: 1rem }
+  &:last-of-type { margin-bottom: 1rem }
   margin-top: calc(1rem * var(--book-keep));
   margin-bottom: calc(1rem * var(--book-keep));
   & + p { margin-top: calc(1rem * var(--book-keep)) }
@@ -54,6 +58,8 @@ p.book {
 p:has(+ p.book) { margin-bottom: calc(1rem * var(--book-keep)) }
 
 p.hanging {
+  &:first-of-type { margin-top: 1rem }
+  &:last-of-type { margin-bottom: 1rem }
   margin-top: calc(1rem * var(--hanging-keep));
   margin-bottom: calc(1rem * var(--hanging-keep));
   & + p { margin-top: calc(1rem * var(--hanging-keep)) }
