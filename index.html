@@ -106,9 +106,37 @@ additionally, the following [Baremark Addons] are also loaded.
 
 ### Metadata
 
-* `class`---Class names to add to for the document's `<html>` tag. (See also
-  "[Indentation](#indentation)").
+Metadata is processed by the Baremark addon [meta], and then used to generate
+the page header, footer and some of the page metadata (such as favicon, and
+page `<title>`).
 
+The following are possible values (usually, only `created`, `updated`,
+`license`, `favicon` and `author` is needed):
+
+* `author`---Author name. Used in the page `<title>`, header and footer.
+* `class`---CSS class name for [indentation mode](#indentation). Allowed values
+  are: `book` (default), `hanging`, or `blank`. Used to set `class` attribute
+  of the page `<html>` tag.
+* `created` (or `date`)---Creation date for the page in ISO 8601 format (as is
+  outputted by shell command `date -Isecond`). Used in the page title.
+* `favicon`---Filename or URL for favicon to use for the page.
+* `lang`---Set `lang` attribute for document `<html>` tag. Default value is
+  `en-GB` 'English, Great Britain'. (This was chosen as a default because it
+  has a sane date defaults, and since it uses the metric system.)
+* `license`---If given, this value is used as-is in the page footer (preceded
+  by 'License:').
+* `title`---Specifies the title of the document. If no `title` field is
+  specified, then Baremark tries grab the first page heading as `title`
+  instead. Default value is `[NO TITLE]` (chosen to grab your attention,
+  because, really, you should set a title). Used in the page title, and
+  `<title>`.
+* `titleId`---If specified sets the `id` attribute of the page (`<h1>`)
+  heading.
+* `updated`---Creation date for the page in ISO 8601 format (as is outputted by
+  shell command `date -Isecond`). Used in the page title.
+* `years`---Copyright years. Default value is a combination of the years found
+  in the `created` and `updated` metadata fields, so this seldom needs to be
+  set. Used in the page footer.
 
 ## Scroll Position Restoring
 
