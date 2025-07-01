@@ -1,6 +1,6 @@
 -*- org -*-
 
-* [6/8] Cleanup indentation mode CSS
+* [7/10] Cleanup indentation mode CSS
   Merge into main CSS, do the fixes mentioned in the CSS code.
 ** DONE Support 'book', 'hanging' & 'blank'
    CLOSED: [2025-06-29 Sun 17:27]
@@ -22,8 +22,13 @@
    `<p>`s.
 ** DONE Document the metadata stuff!
    CLOSED: [2025-07-01 Tue 04:34]
+** DONE Insert the actual vertical margins (not 1rem)
+   CLOSED: [2025-07-01 Tue 04:44]
+** TODO Optimize setting of `margin-top`, `margin-bottom`
+   Rewrite and merge some of the margin-related rules?
 ** TODO Blank `<div></div>` between paragraphs should result in blank
-** TODO Insert the actual vertical margins (not 1rem)
+   Should our old `<p><p>` trick also work?
+** TODO Merge `paragraphs.css` into `main.css`
 * TODO Table-of-content: Use bullet list with lines(?)
   https://zrajm.org/baremark/
 * TODO Table-of-content: Hanging indent

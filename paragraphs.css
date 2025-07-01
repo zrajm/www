@@ -33,34 +33,34 @@ html, .blank { --is-book: 0; --is-hanging: 0; --is-contd: 0 }
 
 /* FIXME: what about first & last paragraphs top & bottom? */
 p {
-  &:first-of-type { margin-top: 1rem }
-  &:last-of-type { margin-bottom: 1rem }
-  margin-top: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
-  margin-bottom: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
+  &:first-of-type { margin-top: calc(var(--leading) * .5rem) }
+  &:last-of-type { margin-bottom: calc(var(--leading) * .5rem) }
+  margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
+  margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   &:where(:has(+ p)) {
-    margin-bottom: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
+    margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   }
   &:where(+ p)  {
-    margin-top: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
+    margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   }
 }
 
 p.book {
-  &:first-of-type { margin-top: 1rem }
-  &:last-of-type { margin-bottom: 1rem }
-  margin-top: calc(1rem * (1 - var(--is-book)));
-  margin-bottom: calc(1rem * (1 - var(--is-book)));
-  & + p { margin-top: calc(1rem * (1 - var(--is-book))) }
+  &:first-of-type { margin-top: calc(var(--leading) * .5rem) }
+  &:last-of-type { margin-bottom: calc(var(--leading) * .5rem) }
+  margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book)));
+  margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book)));
+  & + p { margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book))) }
 }
-p:has(+ p.book) { margin-bottom: calc(1rem * (1 - var(--is-book))) }
+p:has(+ p.book) { margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book))) }
 
 p.hanging {
-  &:first-of-type { margin-top: 1rem }
-  &:last-of-type { margin-bottom: 1rem }
-  margin-top: calc(1rem * (1 - var(--is-hanging)));
-  margin-bottom: calc(1rem * (1 - var(--is-hanging)));
-  & + p { margin-top: calc(1rem * (1 - var(--is-hanging))) }
+  &:first-of-type { margin-top: calc(var(--leading) * .5rem) }
+  &:last-of-type { margin-bottom: calc(var(--leading) * .5rem) }
+  margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-hanging)));
+  margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-hanging)));
+  & + p { margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-hanging))) }
 }
-p:has(+ p.hanging) { margin-bottom: calc(1rem * (1 - var(--is-hanging))) }
+p:has(+ p.hanging) { margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-hanging))) }
 
 /*[eof]*/
