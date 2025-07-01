@@ -1,6 +1,6 @@
 -*- org -*-
 
-* [3/7] Cleanup indentation mode CSS
+* [4/7] Cleanup indentation mode CSS
   Merge into main CSS, do the fixes mentioned in the CSS code.
 ** DONE Support 'book', 'hanging' & 'blank'
    CLOSED: [2025-06-29 Sun 17:27]
@@ -13,7 +13,8 @@
    prefix makes it obvious that they are Boolean values, setting them to `1`
    (true) in respective mode is more intuitive than having the logic being
    inverted.
-** TODO Add 'contd' indent class
+** DONE Add 'contd' indent class
+   CLOSED: [2025-07-01 Tue 02:34]
 ** TODO Document the metadata stuff!
 ** TODO Insert the actual vertical margins (not 1rem)
 ** TODO Allow `<script>` and `<style>` tags in runs of `<p>`?

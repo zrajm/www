@@ -15,8 +15,9 @@ p:not(.blank,.hanging) + p {
   text-indent: calc(var(--indent) * (
     /* If 'book' AND not first paragraph: Positive indent. */
     (var(--is-book) * var(--is-nonfirst-p)) +
-    /* If 'hanging' negative indent. */
-    (var(--is-hanging) * -1)
+    /* If 'hanging': -1 indent; 'contd': +1 indent. */
+    /* ('contd' is only enabled when 'hanging' is too.) */
+    (var(--is-hanging) * -1) + (var(--is-contd) * 2)
   ));
 }
 
@@ -29,7 +30,8 @@ p:not(.book,.blank) {
     /* If 'book' AND not first paragraph: Positive indent. */
     (var(--is-book) * var(--is-nonfirst-p)) +
     /* If 'hanging' negative indent. */
-    (var(--is-hanging) * -1)
+    /* ('contd' is only enabled when 'hanging' is too.) */
+    (var(--is-hanging) * -1) + (var(--is-contd) * 2)
   ));
   padding-left: calc(var(--indent) * var(--is-hanging));
 }
@@ -37,9 +39,10 @@ p:not(.book,.blank) {
 /*****************************************************************************/
 
 /* Booleans for indent modes. */
-html, .blank { --is-book: 0; --is-hanging: 0 }
-.book        { --is-book: 1; --is-hanging: 0 }
-.hanging     { --is-book: 0; --is-hanging: 1 }
+html, .blank { --is-book: 0; --is-hanging: 0; --is-contd: 0 }
+.book        { --is-book: 1; --is-hanging: 0; --is-contd: 0 }
+.hanging     { --is-book: 0; --is-hanging: 1; --is-contd: 0 }
+.contd       { --is-book: 0; --is-hanging: 1; --is-contd: 1 }
 
 /* FIXME: what about first & last paragraphs top & bottom? */
 p {
