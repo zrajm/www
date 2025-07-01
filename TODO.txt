@@ -1,6 +1,6 @@
 -*- org -*-
 
-* [4/7] Cleanup indentation mode CSS
+* [5/8] Cleanup indentation mode CSS
   Merge into main CSS, do the fixes mentioned in the CSS code.
 ** DONE Support 'book', 'hanging' & 'blank'
    CLOSED: [2025-06-29 Sun 17:27]
@@ -15,9 +15,14 @@
    inverted.
 ** DONE Add 'contd' indent class
    CLOSED: [2025-07-01 Tue 02:34]
+** DONE Allow `<script>` and `<style>` tags in runs of `<p>`?
+   CLOSED: [2025-07-01 Tue 03:37]
+   One `<script>` and/or `<style>` tag may now be inserted between any `<p>`
+   tags without affecting how the CSS adds 'text-indent' to book indented
+   `<p>`s.
+** TODO Blank `<div></div>` between paragraphs should result in blank
 ** TODO Document the metadata stuff!
 ** TODO Insert the actual vertical margins (not 1rem)
-** TODO Allow `<script>` and `<style>` tags in runs of `<p>`?
 * TODO Table-of-content: Use bullet list with lines(?)
   https://zrajm.org/baremark/
 * TODO Table-of-content: Hanging indent

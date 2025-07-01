@@ -6,7 +6,13 @@ html { --is-nonfirst-p: 0 }
 /* All sibling `<p>` always inherit the same indent mode, so mode can only
    differ between them if set with <p class=MODE>. So here, set 'nonfirst' for
    <p> which follows <p> with no indent class, or with 'book' class. */
-p:not(.blank,.hanging,.contd) + p { --is-nonfirst-p: var(--is-book) }
+p:not(.blank,.hanging,.contd) + p,
+p:not(.blank,.hanging,.contd) + style + p,
+p:not(.blank,.hanging,.contd) + style + script + p,
+p:not(.blank,.hanging,.contd) + script + p,
+p:not(.blank,.hanging,.contd) + script + style + p {
+  --is-nonfirst-p: var(--is-book)
+}
 p {
   text-indent: calc(var(--indent) * (
     /* Book + non-first paragraph = 1, otherwise 0. */
