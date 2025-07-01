@@ -1,19 +1,17 @@
 /*-*- css-indent-offset: 2 -*-*/
 /* Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code). */
 
-/* If a paragraph inherits a value, then the inherited value is the same for
-   all sibling paragraphs. */
+html { --is-nonfirst-p: 0 }
 
-html { --is-nonfirst-p: 0 } /* for 'text-indent' for 'book' */
-
-/* Indent 1st line in book paragraph (if following another book paragraph). */
+/* All sibling `<p>` always inherit the same indent mode, so mode can only
+   differ between them if set with <p class=MODE>. So here, set 'nonfirst' for
+   <p> which follows <p> with no indent class, or with 'book' class. */
 p:not(.blank,.hanging,.contd) + p { --is-nonfirst-p: var(--is-book) }
 p {
   text-indent: calc(var(--indent) * (
-    /* If 'book' AND not first paragraph: Positive indent. */
+    /* Book + non-first paragraph = 1, otherwise 0. */
     (var(--is-book) * var(--is-nonfirst-p)) +
-    /* If 'hanging' negative indent. */
-    /* ('contd' is only enabled when 'hanging' is too.) */
+    /* Hanging = -1, hanging + contd = 1, otherwise 0. */
     (var(--is-hanging) * -1) + (var(--is-contd) * 2)
   ));
   padding-left: calc(var(--indent) * var(--is-hanging));
