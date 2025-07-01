@@ -9,65 +9,68 @@ html { --is-nonfirst-p: 0 } /* for 'text-indent' for 'book' */
 /* Indent 1st line in book paragraph (if following another book paragraph). */
 p:not(.blank,.hanging) + p {
   --is-nonfirst-p: 1;
-  --not-book-keep: calc(1 - var(--book-keep));
-  --not-hanging-keep: calc(1 - var(--hanging-keep));
+  /* In the following there's one line per indent mode. Indent modes that aren't
+   * in effect resuts are zero, so they can all be added up and only the
+   * current mode is applied. */
   text-indent: calc(var(--indent) * (
     /* If 'book' AND not first paragraph: Positive indent. */
-    (var(--not-book-keep) * var(--is-nonfirst-p)) +       /* one of these is zero */
+    (var(--is-book) * var(--is-nonfirst-p)) +
     /* If 'hanging' negative indent. */
-    (var(--not-hanging-keep) * -1)
+    (var(--is-hanging) * -1)
   ));
 }
 
 /* Hanging indent. */
 p:not(.book,.blank) {
-  --not-book-keep: calc(1 - var(--book-keep));
-  --not-hanging-keep: calc(1 - var(--hanging-keep));
+  /* In the following there's one line per indent mode. Indent modes that aren't
+   * in effect resuts are zero, so they can all be added up and only the
+   * current mode is applied. */
   text-indent: calc(var(--indent) * (
     /* If 'book' AND not first paragraph: Positive indent. */
-    (var(--not-book-keep) * var(--is-nonfirst-p)) +       /* one of these is zero */
+    (var(--is-book) * var(--is-nonfirst-p)) +
     /* If 'hanging' negative indent. */
-    (var(--not-hanging-keep) * -1)
+    (var(--is-hanging) * -1)
   ));
-  padding-left: calc(var(--indent) * var(--not-hanging-keep));
+  padding-left: calc(var(--indent) * var(--is-hanging));
 }
 
 /*****************************************************************************/
 
-html, .blank { --book-keep: 1; --hanging-keep: 1 }
-.book        { --book-keep: 0; --hanging-keep: 1 }
-.hanging     { --book-keep: 1; --hanging-keep: 0 }
+/* Booleans for indent modes. */
+html, .blank { --is-book: 0; --is-hanging: 0 }
+.book        { --is-book: 1; --is-hanging: 0 }
+.hanging     { --is-book: 0; --is-hanging: 1 }
 
 /* FIXME: what about first & last paragraphs top & bottom? */
 p {
   &:first-of-type { margin-top: 1rem }
   &:last-of-type { margin-bottom: 1rem }
-  margin-top: calc(1rem * var(--book-keep) * var(--hanging-keep));
-  margin-bottom: calc(1rem * var(--book-keep) * var(--hanging-keep));
+  margin-top: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
+  margin-bottom: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   &:where(:has(+ p)) {
-    margin-bottom: calc(1rem * var(--book-keep) * var(--hanging-keep));
+    margin-bottom: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   }
   &:where(+ p)  {
-    margin-top: calc(1rem * var(--book-keep) * var(--hanging-keep));
+    margin-top: calc(1rem * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   }
 }
 
 p.book {
   &:first-of-type { margin-top: 1rem }
   &:last-of-type { margin-bottom: 1rem }
-  margin-top: calc(1rem * var(--book-keep));
-  margin-bottom: calc(1rem * var(--book-keep));
-  & + p { margin-top: calc(1rem * var(--book-keep)) }
+  margin-top: calc(1rem * (1 - var(--is-book)));
+  margin-bottom: calc(1rem * (1 - var(--is-book)));
+  & + p { margin-top: calc(1rem * (1 - var(--is-book))) }
 }
-p:has(+ p.book) { margin-bottom: calc(1rem * var(--book-keep)) }
+p:has(+ p.book) { margin-bottom: calc(1rem * (1 - var(--is-book))) }
 
 p.hanging {
   &:first-of-type { margin-top: 1rem }
   &:last-of-type { margin-bottom: 1rem }
-  margin-top: calc(1rem * var(--hanging-keep));
-  margin-bottom: calc(1rem * var(--hanging-keep));
-  & + p { margin-top: calc(1rem * var(--hanging-keep)) }
+  margin-top: calc(1rem * (1 - var(--is-hanging)));
+  margin-bottom: calc(1rem * (1 - var(--is-hanging)));
+  & + p { margin-top: calc(1rem * (1 - var(--is-hanging))) }
 }
-p:has(+ p.hanging) { margin-bottom: calc(1rem * var(--hanging-keep)) }
+p:has(+ p.hanging) { margin-bottom: calc(1rem * (1 - var(--is-hanging))) }
 
 /*[eof]*/
