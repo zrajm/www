@@ -7,25 +7,8 @@
 html { --is-nonfirst-p: 0 } /* for 'text-indent' for 'book' */
 
 /* Indent 1st line in book paragraph (if following another book paragraph). */
-p:not(.blank,.hanging) + p {
-  --is-nonfirst-p: 1;
-  /* In the following there's one line per indent mode. Indent modes that aren't
-   * in effect resuts are zero, so they can all be added up and only the
-   * current mode is applied. */
-  text-indent: calc(var(--indent) * (
-    /* If 'book' AND not first paragraph: Positive indent. */
-    (var(--is-book) * var(--is-nonfirst-p)) +
-    /* If 'hanging': -1 indent; 'contd': +1 indent. */
-    /* ('contd' is only enabled when 'hanging' is too.) */
-    (var(--is-hanging) * -1) + (var(--is-contd) * 2)
-  ));
-}
-
-/* Hanging indent. */
-p:not(.book,.blank) {
-  /* In the following there's one line per indent mode. Indent modes that aren't
-   * in effect resuts are zero, so they can all be added up and only the
-   * current mode is applied. */
+p:not(.blank,.hanging,.contd) + p { --is-nonfirst-p: var(--is-book) }
+p {
   text-indent: calc(var(--indent) * (
     /* If 'book' AND not first paragraph: Positive indent. */
     (var(--is-book) * var(--is-nonfirst-p)) +
