@@ -2,7 +2,7 @@
 <link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-07-01T02:34:45+02:00
+Updated: 2025-07-01T03:47:26+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -267,26 +267,26 @@ they are automatically separated by vertical space.
 ```
 *Book indent* is the default, and it is used by this paragraph.
 
-This is a second paragraph with book indent, and as you can see,
-its first line is indented.
+In this second paragraph with book indent, the first line is
+indented, as you can see.
 
 <div class=hanging>
 
-*Hanging indent* is often used in glossaries or the reference
-section of a thesis, and it looks like this.
+*Hanging indent* is often used in glossaries, or in reference
+section of articles, and it looks like this.
 
-<p class=contd>*Continued indent* can be used when there's more
-than one paragraph for a glossary entry.
+<p class=contd>*Continued indent* can be used when there is more
+than one paragraph in a glossary entry.
 
-This is a second paragraph with hanging indent to illustrate the
-effect of the `<div>` tag.
+This is a second paragraph with hanging indent, illustrating the
+effect of the `<div class=hanging>` above.
 
 </div><div class=blank>
 
-*Blank spacing* means that a paragraph separated is from other
-paragraphs by vertical space, like this one.
+*Blank spacing* means that a paragraph separated is from
+surrounding paragraphs by vertical space, like this one.
 
-...And this.
+...And this one.
 
 </div>
 ```
@@ -295,31 +295,31 @@ Which is rendered like this:
 
 > *Book indent* is the default, and it is used by this paragraph.
 >
-> This is a second paragraph with book indent, and as you can see,
-> its first line is indented.
+> In this second paragraph with book indent, the first line is
+> indented, as you can see.
 >
 > <div class=hanging>
 >
-> *Hanging indent* is often used in glossaries or the reference
-> section of a thesis, and it looks like this.
+> *Hanging indent* is often used in glossaries, or in reference
+> section of articles, and it looks like this.
 >
-> <p class=contd>*Continued indent* can be used when there's more
-> than one paragraph for a glossary entry.
+> <p class=contd>*Continued indent* can be used when there is more
+> than one paragraph in a glossary entry.
 >
-> This is a second paragraph with hanging indent to illustrate the
-> effect of the `<div>` tag.
+> This is a second paragraph with hanging indent, illustrating the
+> effect of the `<div class=hanging>` above.
 >
 > </div><div class=blank>
 >
-> *Blank spacing* means that a paragraph separated is from other
-> paragraphs by vertical space, like this one.
+> *Blank spacing* means that a paragraph separated is from
+> surrounding paragraphs by vertical space, like this one.
 >
-> ...And this.
+> ...And this one.
 >
 > </div>
 
 As the CSS logic implementing these indentation modes is somewhat complex,
-there's a separate page with [Indentation Test Cases](tests.html).
+there's a separate page with [indentation test cases](tests.html).
 
 
 ## Dark Mode
