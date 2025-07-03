@@ -1,66 +1,73 @@
 /*-*- css-indent-offset: 2 -*-*/
 /* Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code). */
 
-html { --is-nonfirst-p: 0 }
+/***************************/
+/** Paragraph indentation **/
+/***************************/
 
-/* All sibling `<p>` always inherit the same indent mode, so mode can only
-   differ between them if set with <p class=MODE>. So here, set 'nonfirst' for
-   <p> which follows <p> with no indent class, or with 'book' class. */
-p:not(.blank,.hanging,.contd) + p,
-p:not(.blank,.hanging,.contd) + style + p,
-p:not(.blank,.hanging,.contd) + style + script + p,
-p:not(.blank,.hanging,.contd) + script + p,
-p:not(.blank,.hanging,.contd) + script + style + p {
-  --is-nonfirst-p: var(--is-book)
+/* Booleans */
+html { --is-first: 1 } /* 1 = 1st <p> in run; 0 = subsequent */
+html,
+:not(p).blank   { --parent-is-blank: 1; --parent-is-book: 0; --parent-is-hanging: 0; --parent-is-contd: 0 }
+:not(p).book    { --parent-is-blank: 0; --parent-is-book: 1; --parent-is-hanging: 0; --parent-is-contd: 0 }
+:not(p).hanging { --parent-is-blank: 0; --parent-is-book: 0; --parent-is-hanging: 1; --parent-is-contd: 0 }
+:not(p).contd   { --parent-is-blank: 0; --parent-is-book: 0; --parent-is-hanging: 1; --parent-is-contd: 1 }
+p:not(.blank,.book,.hanging,.contd) {
+  --is-blank  : var(--parent-is-blank);
+  --is-book   : var(--parent-is-book);
+  --is-hanging: var(--parent-is-hanging);
+  --is-contd  : var(--parent-is-contd);
+}
+p.blank   { --is-blank: 1; --is-book: 0; --is-hanging: 0; --is-contd: 0 }
+p.book    { --is-blank: 0; --is-book: 1; --is-hanging: 0; --is-contd: 0 }
+p.hanging { --is-blank: 0; --is-book: 0; --is-hanging: 1; --is-contd: 0 }
+p.contd   { --is-blank: 0; --is-book: 0; --is-hanging: 1; --is-contd: 1 } /* submode of 'hanging' */
+
+/* For each pair of <p>s, unset --is-first for 2nd <p> if indent is same. */
+p.blank + p.blank,
+p.book + p.book,
+p:is(.hanging,.contd) + p:is(.hanging,.contd),
+p:not(.blank,.book,.hanging,.contd) + p:not(.blank,.book,.hanging,.contd) {
+  /* Two <p>s with same or without indent class.
+   * (If without, they both inherit the same.) */
+  --is-first: 0;
+}
+p.blank + p:not(.blank,.book,.hanging,.contd),
+p:not(.blank,.book,.hanging,.contd) + p.blank {
+  /* One 'blank', one without indent class. */
+  --is-first: calc(1 - var(--parent-is-blank));
+}
+p.book + p:not(.blank,.book,.hanging,.contd),
+p:not(.blank,.book,.hanging,.contd) + p.book {
+  /* One 'book', one without indent class. */
+  --is-first: calc(1 - var(--parent-is-book));
+}
+p:is(.hanging,.contd) + p:not(.blank,.book,.hanging,.contd),
+p:not(.blank,.book,.hanging,.contd) + p:is(.hanging,.contd) {
+  /* One 'hanging' or 'contd', one without indent class. */
+  --is-first: calc(1 - var(--parent-is-hanging));
 }
 p {
-  text-indent: calc(var(--indent) * (
-    /* Book + non-first paragraph = 1, otherwise 0. */
-    (var(--is-book) * var(--is-nonfirst-p)) +
-    /* Hanging = -1, hanging + contd = 1, otherwise 0. */
+  padding-left: calc(var(--is-hanging) * var(--indent));
+  text-indent: calc((
+    /* 1 = indented, 0 = nada, -1 = outdented */
+    (var(--is-book) * (1 - var(--is-first))) +
     (var(--is-hanging) * -1) + (var(--is-contd) * 2)
-  ));
-  padding-left: calc(var(--indent) * var(--is-hanging));
-}
+  ) * var(--indent));
+  /* For first-run of 'book' and 'hanging' and every 'blank'. */
+  margin-top: calc((
+    (var(--is-book)    * var(--is-first)) +
+    (var(--is-hanging) * var(--is-first)) +
+    (var(--is-blank))
+  ) * (var(--leading) * .5rem));
 
-/*****************************************************************************/
-
-/* Booleans for indent modes. */
-html, .blank { --is-book: 0; --is-hanging: 0; --is-contd: 0 }
-.book        { --is-book: 1; --is-hanging: 0; --is-contd: 0 }
-.hanging     { --is-book: 0; --is-hanging: 1; --is-contd: 0 }
-.contd       { --is-book: 0; --is-hanging: 1; --is-contd: 1 }
-
-/* FIXME: what about first & last paragraphs top & bottom? */
-p {
-  &:first-of-type { margin-top: calc(var(--leading) * .5rem) }
-  &:last-of-type { margin-bottom: calc(var(--leading) * .5rem) }
-  margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
+  &:last-of-type  {
+    margin-bottom: calc(var(--leading) * .5rem);
+  }
   margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   &:where(:has(+ p)) {
     margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
   }
-  &:where(+ p)  {
-    margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book)) * (1 - var(--is-hanging)));
-  }
 }
-
-p.book {
-  &:first-of-type { margin-top: calc(var(--leading) * .5rem) }
-  &:last-of-type { margin-bottom: calc(var(--leading) * .5rem) }
-  margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book)));
-  margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book)));
-  & + p { margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-book))) }
-}
-p:has(+ p.book) { margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-book))) }
-
-p.hanging {
-  &:first-of-type { margin-top: calc(var(--leading) * .5rem) }
-  &:last-of-type { margin-bottom: calc(var(--leading) * .5rem) }
-  margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-hanging)));
-  margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-hanging)));
-  & + p { margin-top: calc((var(--leading) * .5rem) * (1 - var(--is-hanging))) }
-}
-p:has(+ p.hanging) { margin-bottom: calc((var(--leading) * .5rem) * (1 - var(--is-hanging))) }
 
 /*[eof]*/

@@ -2,7 +2,7 @@
 <link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-07-01T03:47:26+02:00
+Updated: 2025-07-03T05:14:44+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -345,6 +345,13 @@ Which is rendered like this:
 > ...And this one.
 >
 > </div>
+
+**Note:** Inserting `<script>` or `<style>` tags between paragraphs will affect
+the indentation, so make sure to put these at the beginning/end of the
+document, or, at least, outside of a run of `<p>` tags with the same
+indentation mode. (E.g. placing `<script>` or `<style>` tags next to `<table>`
+or `<figure>` will not have any detrimental effect, as tables and figures
+intentionally breaks indentation anyway.)
 
 As the CSS logic implementing these indentation modes is somewhat complex,
 there's a separate page with [indentation test cases](tests.html).

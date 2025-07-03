@@ -2,7 +2,7 @@
 <link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-29T17:05:40+02:00
-Updated: 2025-07-01T03:29:34+02:00
+Updated: 2025-07-03T05:14:44+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -18,7 +18,7 @@ Author: zrajm
 
 -------------------------------------------------------------------------------
 
-<style>body { max-width: unset }</style>
+<style>body { max-width: unset } div:not([id]) { outline: 2px solid #8884 }</style>
 <div id=tests style="columns:20rem auto;column-gap:2rem;column-rule:1px solid #888a">
 
 # Case 1: Collapse (two 'book', inside 'hanging › blank')
@@ -51,8 +51,9 @@ Author: zrajm
 # Case 3 Collapse (two 'book')
 
 <div class="book">
-  <p class="book">book literal</p>
   <p>book inherited</p>
+  <p>book inherited</p>
+  <p class="book">book literal</p>
 </div>
 
 # Case 4: No Collapse ('book' + 'hanging')
@@ -133,7 +134,7 @@ Author: zrajm
     <p>blank inherited</p>
     <p>blank inherited</p>
   </div>
-  <p>blank literal</p>
+  <p>book inherited</p>
 </div>
 
 # Case 15: Collapse (three 'book')
