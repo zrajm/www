@@ -1,6 +1,6 @@
 -*- org -*-
 
-* [8/11] Cleanup indentation mode CSS
+* [10/11] Cleanup indentation mode CSS
   Merge into main CSS, do the fixes mentioned in the CSS code.
 ** DONE Support 'book', 'hanging' & 'blank'
    CLOSED: [2025-06-29 Sun 17:27]
@@ -26,8 +26,10 @@
    CLOSED: [2025-07-01 Tue 04:44]
 ** DONE Fix `margin-top` rules
    CLOSED: [2025-07-03 Thu 05:14]
-** TODO Fix `margin-bottom` rules
-** TODO Blank `<div></div>` between paragraphs should result in blank
+** DONE Fix `margin-bottom` rules
+   CLOSED: [2025-07-09 Wed 19:21]
+** DONE Blank `<div></div>` between paragraphs should result in blank
+   CLOSED: [2025-07-09 Wed 19:21]
    Should our old `<p><p>` trick also work?
 ** TODO Merge `paragraphs.css` into `main.css`
 * TODO Table-of-content: Use bullet list with lines(?)

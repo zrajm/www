@@ -1,0 +1,94 @@
+<!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
+<link rel=stylesheet href=nojs.css><textarea disabled>
+
+Created: 2025-07-09T19:21:15+02:00
+License: CC BY-NC-SA (text), GPLv2 (code).
+Favicon: /www/favicon.svg
+Author: zrajm
+
+# HTML-Scented Markdown: Paragraph Logic
+
+> This is a description of the CSS logic that keeps track of first and last
+> paragraphs in runs of paragraphs of the same type.
+
+-------------------------------------------------------------------------------
+
+# First and Last Paragraphs
+
+This CSS keeps track of whether each paragraph (`<p>` tag) is the first or last
+in a run of paragraphs. This is done using the (Boolean-esque) CSS variables
+`--is-first` and `--is-last`. (I say Boolean-esque since CSS variables do not
+have a special Boolean type, but these variables are always set to either `1`
+[true] or `0` [false].)
+
+For this finding of last and first paragraphs to work properly, the
+[indentation mode](index.html#indentation) needs considered, as `--is-first`
+and `--is-last` should only true for all paragraphs that are the first and last
+paragraph in a run of paragraphs *with the same indentation mode*. There are
+three indentation modes, specified by one of the following class names:
+
+* `book`---*Book indent* (default). Indent the first line of each paragraph
+  (except in a paragraph directly after heading, table, image or other matter).
+* `hanging` or `contd`---*Hanging* or *continued indent*. First line is
+  outdented, all the other lines are indented. (*Continued indent* looks the
+  same as book indent, except that the whole paragraph has an extra
+  indentation. Used to continue a paragraph with hanging indent without
+  outdenting the first line.)
+* `blank`---*Blank spacing.* Paragraphs are separated from each other a
+  vertical blank space. (This the most common paragraph separation on the web.)
+
+**Note:** A paragraph can be both first and last at the same time! (E.g. if
+there's only one paragraph in a `<div>` or under a heading.)
+
+
+# Indent Class Inheritance
+
+Indent classes are inherited by child elements. (This is by design.)
+
+This is achieved using CSS variables, but since CSS selectors can't match
+against CSS variables, a little bit of Boolean magic is needed to find which
+paragraphs are first and last in runs of paragraphs of the same type.
+
+Some pseudo code for describing what the CSS does:
+
+```
+// Default.
+--is-first: true
+--is-last: true
+
+// Unset 'first' and 'last' in two adjacent <p> of same type.
+foreach (two adjacent <p>s) {
+  if ((both <p> have same explicit ident class OR
+       both <p> inherit same class
+    ) OR (
+      only one <p> has an explicit ident class AND
+      that class == inherited class
+  )) {
+    for 1st <p> set --is-last: false
+    for 2nd <p> set --is-first: false
+  }
+}
+```
+
+Naturally, that is *waaaayy* more complicated in the CSS itself.
+
+
+## A Note on the Logic
+
+Above, the default state is to assume that each paragraph is first, and last,
+until the opposite can be proven. This may seem like it's the wrong way around,
+since in a typical text most paragraphs are in the middle, but if we reverse
+the logic (and assume that all paragraphs are middle paragraphs until proven
+last and/or first) there are many more cases to test for. (Such as if a
+paragraph is the first inside its parent, or if the comes after a non-paragraph
+tag.)
+
+In the end, by reversing the logic (assuming that all paragraphs are first and
+last until the opposite is proven), we only ever need to consider adjacent
+paragraphs (selector `p + p`), meaning that we need to write fewer selectors,
+and handle fewer corner cases (and probably will have fewer bugs).
+
+-------------------------------------------------------------------------------
+
+</textarea><script type=module src=main.js></script>
+<!--[eof]-->
