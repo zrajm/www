@@ -44,7 +44,6 @@ p.book:has(+ p.book),
 p:is(.hanging,.contd):has(+ p:is(.hanging,.contd)),
 p:not(.blank,.book,.hanging,.contd):has(+ p:not(.blank,.book,.hanging,.contd)) {
   --is-last: 0;
-  background: #8888;
 }
 /* One 'blank', one without indent class. */
 p.blank + p:not(.blank,.book,.hanging,.contd),
@@ -54,7 +53,6 @@ p:not(.blank,.book,.hanging,.contd) + p.blank {
 p.blank:has(+ p:not(.blank,.book,.hanging,.contd)),
 p:not(.blank,.book,.hanging,.contd):has(+ p.blank) {
   --is-last: calc(1 - var(--parent-is-blank));
-  background: #f008;
 }
 /* One 'book', one without indent class. */
 p.book + p:not(.blank,.book,.hanging,.contd),
@@ -64,7 +62,6 @@ p:not(.blank,.book,.hanging,.contd) + p.book {
 p.book:has(+ p:not(.blank,.book,.hanging,.contd)),
 p:not(.blank,.book,.hanging,.contd):has(+ p.book) {
   --is-last: calc(1 - var(--parent-is-book));
-  background: #0f08;
 }
 /* One 'hanging' or 'contd', one without indent class. */
 p:is(.hanging,.contd) + p:not(.blank,.book,.hanging,.contd),
@@ -74,7 +71,6 @@ p:not(.blank,.book,.hanging,.contd) + p:is(.hanging,.contd) {
 p:is(.hanging,.contd):has(+ p:not(.blank,.book,.hanging,.contd)),
 p:not(.blank,.book,.hanging,.contd):has(+ p:is(.hanging,.contd)) {
   --is-last: calc(1 - var(--parent-is-hanging));
-  background: #00f8;
 }
 
 p {
