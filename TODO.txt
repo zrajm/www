@@ -5,16 +5,24 @@
 * TODO Table-of-content: Hanging indent
   Very long headings needs some indentation so as to not appear as two headings
   in the table-of-content.
+
+  Maybe set '--is-hanging' in the table-of-content, and then use that for
+  `<li>` tags as well?
 * TODO Git commit hook verifying that date of 'Updated' header has changed
 * TODO `quotecurl()` should be invoked on 'title' attributes too
-* TODO Fix scroll shadow
-* TODO Gradient scroll shadow?
-  This article lists a live example at the end with a gradient scroll shadow,
-  which looks kinda nice. Maybe adopt this?
-  https://css-tricks.com/scroll-shadows-with-javascript/
+* [0/2] Scroll shadow
+** TODO Should be fully invisible when not needed
+   Currently the shadow and the anti-shadow (that neutralizes the shadow when
+   there's no more scrolling in that direction) do not completely cancel each
+   other out, so that there is a 'ghost shadow' where there should be no shadow
+   at all.
+** TODO Gradient scroll shadow?
+   This article lists a live example at the end with a gradient scroll shadow,
+   which looks kinda nice. Maybe adopt this?
+   https://css-tricks.com/scroll-shadows-with-javascript/
 
-  This Codepen in the live example used in the article above:
-  https://codepen.io/mindstorm/pen/PoqxXN
+   This Codepen in the live example used in the article above:
+   https://codepen.io/mindstorm/pen/PoqxXN
 * TODO Prettier scroll-to-top button?
   The button should maybe resemble the dark mode switch more?
 * TODO List should have same spacing as blockquotes
@@ -31,24 +39,7 @@
   affect the match.
 
   E.g. `<td>lext <a href="...">link</a</td>` would be matched by td `a:only-link`.
-* TODO Classes for indent modes
-  It should be possible to wrap (e.g. the paragraphs of a glossary) in
-  something like `<div class=hanging>` to get hanging indent for those
-  paragraphs. Specifying `<p class=hanging>` for an individual paragraph should
-  also work.
-
-  What should the modes be called?
-
-  Paragraph mode: There are three modes, controlled by the following HTML
-  attributes. Is inherited, so you can wrap any number of paragraphs with a
-  <div hanging>.
-
-    'book'    -- separate paragraphs by indenting first line, except for first
-                 paragraph (default)
-    'blank'   -- separated by blank lines
-    'hanging' -- hanging indent (default in tables)
-
-  Should text in tables be indented according to the current indent mode?
+* TODO Verify completeness of docs, add any missing stuff
 * FINISHED
 ** DONE Weed out vertical rhythm stuff
    CLOSED: [2025-06-12 Thu 11:06]
@@ -88,8 +79,25 @@
    In this repo there should also be a Git commit hook script available (which
    is easily installable) which verifies that the `Update:` header has been
    updated when committing an HTML file.
-** [11/11] Cleanup indentation mode CSS
-   Merge into main CSS, do the fixes mentioned in the CSS code.
+** [11/11] Classes for indent modes
+   It should be possible to wrap (e.g. the paragraphs of a glossary) in
+   something like `<div class=hanging>` to get hanging indent for those
+   paragraphs. Specifying `<p class=hanging>` for an individual paragraph
+   should also work.
+
+   What should the modes be called?
+
+   Paragraph mode: There are three modes, controlled by the following HTML
+   attributes. Is inherited, so you can wrap any number of paragraphs with a
+   <div hanging>.
+
+     'book'    -- separate paragraphs by indenting first line, except for first
+                  paragraph (default)
+     'blank'   -- separated by blank lines
+     'hanging' -- hanging indent (default in tables)
+     'contd'   -- continued hanging indent
+
+  Should text in tables be indented according to the current indent mode?
 *** DONE Support 'book', 'hanging' & 'blank'
     CLOSED: [2025-06-29 Sun 17:27]
 *** DONE Fixed vertical space on first/last `<p>` inside `<div>`
@@ -121,5 +129,4 @@
     Should our old `<p><p>` trick also work?
 *** DONE Merge `paragraphs.css` into `main.css`
     CLOSED: [2025-07-09 Wed 21:09]
-** TODO Finish writing rudimentary version of docs
 * [eof]
