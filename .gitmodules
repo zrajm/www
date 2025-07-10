@@ -1,9 +1,9 @@
-[submodule "www/elemental"]
+[submodule "elemental"]
 	path = elemental
 	url = git@github.com:zrajm/elemental
-[submodule "www/baremark"]
+[submodule "baremark"]
 	path = baremark
 	url = git@github.com:zrajm/baremark
-[submodule "www/quotecurl"]
+[submodule "quotecurl"]
 	path = quotecurl
 	url = git@github.com:zrajm/quotecurl
