@@ -79,7 +79,7 @@
    In this repo there should also be a Git commit hook script available (which
    is easily installable) which verifies that the `Update:` header has been
    updated when committing an HTML file.
-** [11/11] Classes for indent modes
+** [12/12] Classes for indent modes
    It should be possible to wrap (e.g. the paragraphs of a glossary) in
    something like `<div class=hanging>` to get hanging indent for those
    paragraphs. Specifying `<p class=hanging>` for an individual paragraph
@@ -129,4 +129,7 @@
     Should our old `<p><p>` trick also work?
 *** DONE Merge `paragraphs.css` into `main.css`
     CLOSED: [2025-07-09 Wed 21:09]
+*** DONE Added scroll-margin to :target
+    CLOSED: [2025-07-20 Sun 07:41]
+    https://codersblock.com/blog/anchor-links-and-how-to-make-them-awesome/
 * [eof]

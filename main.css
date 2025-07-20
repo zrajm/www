@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   & a { color: inherit; text-decoration: none }
   & a[href^="#"]:hover:before {
     color: var(--linefg);
-    content: "#";
+    content: '#';
     display: inline-block;
     width: .875em;
     margin-left: -.875em;
@@ -124,7 +124,7 @@ a {
   transition: box-shadow .2s ease-in-out, background-color .1s ease-in-out;
 }
 a.img { display: inline-block }
-a.img, [id] { position: relative }
+a.img { position: relative }
 a.img img { display: block }
 a.img:hover:before, :target:before {
   content: ' ';
@@ -138,6 +138,10 @@ a.img:hover:before {
 a.img:hover:before, a:not(.img):hover {
   box-shadow: 0 0 .75rem #88f7 inset, 0 0 1.5rem #88f7 inset;
   background: #88f1;
+}
+:target {
+  position: relative;
+  scroll-margin-top: calc(var(--leading) * .75rem);
 }
 :target:before {
   inset: -1rem;
