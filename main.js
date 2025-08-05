@@ -90,17 +90,13 @@ function pageMain() {
   insertOptionalBreakAfterSlash()
   wrapChapters()
 
-  // For table cells which only contains a link, copy HREF to table cell.
-  $(':is(td,th):has(a[href])').forEach(td => {
-    const link = td.querySelector('a[href]')
-    // If table cell and link has same text.
-    if (td.textContent.trim() === link.textContent.trim()) {
-      td.setAttribute('href', link.href)
+  // Add class 'onelink' to table cells which contains exactly one link.
+  $('td, th').forEach(td => {
+    const $td = $(td)
+    if ($td.find('a[href]').length === 1) {
+      $td.addClass('onelink')
     }
   })
-  // If table cell only a link, make whole cell clickable.
-  $(':is(td,th)[href]')
-    .on('click', e => e.currentTarget.querySelector('a[href]').click())
 
   // If page has finished redraw, and is at top of page (= user hasn't scrolled
   // down), jump #hash fragment in URL (if there is one).

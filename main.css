@@ -153,17 +153,27 @@ a.img:hover:before, a:not(.img):hover {
   border-radius: .25rem;
 }
 td, th { padding: 0 .25em }
-td, th {
-  &[href] {
-    position: relative;
-    &:hover:before {
-      position: absolute; inset: 0;
-      content: '';
+
+/* Table cells with only one link has 'onelink' class. */
+td.onelink, th.onelink {
+  position: relative;
+  /* Overlay covering whole table cell, put inside <a>. */
+  /* So that hover or click on cell, does same on link. */
+  & a:before {
+    /* -3px = rounded -.125rem (= 2.5px) */
+    position: absolute; inset: -3px -.25rem; border-radius: .125rem;
+    content: '';
+    transition: box-shadow .2s ease-in-out, background-color .1s ease-in-out;
+  }
+  &:hover {
+    & a { box-shadow: none; background: none } /* disable for link */
+    & a:before {                               /* and enable for overlay */
       box-shadow: 0 0 .75rem #88f7 inset, 0 0 1.5rem #88f7 inset;
       background: #88f1;
     }
   }
 }
+
 a:hover { text-decoration: underline }
 /** Tables **/
 /* All borders are on <td> (for scroll shadows to work), and  */
