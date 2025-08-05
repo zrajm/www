@@ -7,8 +7,6 @@ html { box-sizing: border-box }
 
 /******************************************************************************/
 html {
-  /* allthingssmitty.com/2016/12/05/flexible-type-using-root */
-  font-size: calc(1vw + 1vh + .5vmin);
   /* www.typotheque.com/articles/opentype_features_in_css */
   font-variant-ligatures: common-ligatures;
   max-width: 100%;

@@ -1,5 +1,43 @@
 -*- org -*-
 
+* TODO CSS: 'rem' units give rounding errors
+  There are rounding errors which makes stuff look irregular/ugly sometimes in
+  Firefox (something that goes away when you zoom in). For example, the top and
+  bottom margins get slightly different widths for the table cell overlay used
+  to hilite links when there's only a single link in the cell.
+
+  According to measurements obtained with:
+
+    document.body.insertAdjacentHTML('afterbegin', '<div id=x style=background:#ff0>x')
+    document.querySelector('#x').style.width = '1rem'
+    document.querySelector('#x').clientWidth
+
+  The following values are currently true (because 1rem = 20px):
+
+  | ⅛ | .125rem | 2.5px = 3px (rounded) |
+  | ¼ | .25rem  | 5px                   |
+  | ½ | .5rem   | 10px                  |
+  | ¾ | .75rem  | 15px                  |
+  | 1 | 1rem    | 20px                  |
+
+  Maybe add CSS variables for each measurement used, then set them to rounded
+  values? For example:
+
+  --rem       = 20px
+  --half-rem  = 10px
+  --quart-rem = 5px
+  --eight-rem = 3px
+
+  The following shell command lists all used 'rem' values used in 'main.css':
+
+    <main.css R 's#<svg\b.*</svg>##g' G -o '[0-9.]+rem' U -c S -nk2
+
+  This works in my customized Zsh, with the following global aliases in effect:
+
+    alias -g G='|grep'
+    alias -g R='|perl -Mutf8 -C -pE'
+    alias -g S='|sort'
+    alias -g U='|LC_ALL=C sort|uniq'
 * TODO Table-of-content: Use bullet list with lines(?)
   https://zrajm.org/baremark/
 * TODO Table-of-content: Hanging indent
