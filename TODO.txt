@@ -48,12 +48,16 @@
   `<li>` tags as well?
 * TODO Git commit hook verifying that date of 'Updated' header has changed
 * TODO `quotecurl()` should be invoked on 'title' attributes too
-* [0/2] Scroll shadow
+* [0/3] Scroll shadow
 ** TODO Should be fully invisible when not needed
    Currently the shadow and the anti-shadow (that neutralizes the shadow when
    there's no more scrolling in that direction) do not completely cancel each
    other out, so that there is a 'ghost shadow' where there should be no shadow
    at all.
+** TODO Transparent table background
+   Currently tables have a background color, but is it possible to have a
+   transparent background, and still use scroll shadows? (A transparent
+   background would play nicer with the `:target` background coloring.)
 ** TODO Gradient scroll shadow?
    This article lists a live example at the end with a gradient scroll shadow,
    which looks kinda nice. Maybe adopt this?
