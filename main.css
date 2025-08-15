@@ -120,6 +120,13 @@ a {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   transition: box-shadow .2s ease-in-out, background-color .1s ease-in-out;
+  &:after {
+    margin-left: .125rem;
+    vertical-align: super;
+    font-size: 0;
+  }
+  &[href^="http"]:after { content: url(icon-ext.svg) }
+  &[href$=".pdf"]:after { content: url(icon-pdf.png) }
 }
 a.img { display: inline-block }
 a.img { position: relative }

@@ -1,5 +1,9 @@
 -*- org -*-
 
+* TODO Word-wrapping of PDF/external links icons
+  Currently, when links are line-wrapped, the wrapping can occur between the
+  link name and the icon that follows. This looks ugly, would it be better not
+  to allow that?
 * TODO CSS: 'rem' units give rounding errors
   There are rounding errors which makes stuff look irregular/ugly sometimes in
   Firefox (something that goes away when you zoom in). For example, the top and
