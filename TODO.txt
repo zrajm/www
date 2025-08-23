@@ -1,5 +1,15 @@
 -*- org -*-
 
+* TODO Incorrect indent in some cases                                   :BUG:
+  Given two <div>s on the same level, the 'hanging' class affects both of them,
+  even though it should only affect the latter. There's something fishy about
+  how CSS variables function here, I think. :(
+
+    ----------------------------------------
+    <div>
+
+    <div class=hanging>
+    ----------------------------------------
 * TODO Word-wrapping of PDF/external links icons
   Currently, when links are line-wrapped, the wrapping can occur between the
   link name and the icon that follows. This looks ugly, would it be better not
@@ -178,4 +188,6 @@
 *** DONE Added scroll-margin to :target
     CLOSED: [2025-07-20 Sun 07:41]
     https://codersblock.com/blog/anchor-links-and-how-to-make-them-awesome/
+** DONE Dispatched 'scent:done' event on finishing
+   CLOSED: [2025-08-23 Sat 18:25]
 * [eof]

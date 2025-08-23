@@ -103,6 +103,15 @@ additionally, the following [Baremark Addons] are also loaded.
 | [Docs][toc]   | Table-of-contents                  | [`toc.js`][toc.js]             |
 |               | Remove HTML comments               | [`uncomment.js`][uncomment.js] |
 
+When the main script is done, a `scent:done` event is fired. Javascript that
+you want to run after this may be invoked from an event listener, like so:
+
+```
+document.addEventListener('scent:done', () => {
+  // run after Markdown → HTML has finished
+})
+```
+
 
 ### Metadata
 

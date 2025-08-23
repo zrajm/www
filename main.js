@@ -105,6 +105,8 @@ function pageMain() {
       location.href = location.hash
     }
   }, 100)
+
+  document.dispatchEvent(new Event('scent:done'))
 }
 
 // Uniquify values in list.
