@@ -193,4 +193,11 @@
 ** DONE Renamed files: `main.js` -> `scent.js`, `main.css` -> `scent.css`
    CLOSED: [2025-08-23 Sat 00:00]
    Also added compatibility symlinks (for now).
+** DONE Load Javascript CSS earlier
+   CLOSED: [2025-08-23 Sat 21:01]
+** DONE Better indent-mode class-name detection
+   CLOSED: [2025-08-23 Sat 21:01]
+   Now a class name is added whenever an indent-mode class-name is missing
+   (previously no indent-mode class-name was added if ANY class name was
+   specified in the 'Class: <name>' metadata header.
 * [eof]

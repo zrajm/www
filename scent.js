@@ -7,6 +7,8 @@ import { quotecurl } from './quotecurl/quotecurl.mjs'
 // Load Baremark modules (in order).
 // FIXME: Strictly sequential loading of modules is inefficient. Fix?
 importFiles(
+  replaceCSS,
+  addScrollToTopButton,
   './baremark/addon/table.js',
   './baremark/addon/sup.js',
   './baremark/addon/autolink.js',
@@ -17,7 +19,8 @@ importFiles(
 
 /******************************************************************************/
 
-{ // Scroll-to-top button (shown below fold).
+// Scroll-to-top button (shown below fold).
+function addScrollToTopButton() {
   const [btn] = $(`<a href=#><svg width="24" height="24">
     <path fill="none" stroke="#fff" stroke-linecap="round"
       stroke-linejoin="round" stroke-width="2" d="m18 15-6-6-6 6"/></svg></a>`
@@ -45,14 +48,29 @@ importFiles(
   }).observe(fold)
 }
 
-function pageMain() {
-  window.$ = $                                 // for use in browser console
-
-  // Load stylesheet, remove old when new has loaded.
+// Load stylesheet, remove old when new has loaded.
+function replaceCSS() {
   const oldStyle = $('link[rel="stylesheet"]')
   $('head').append(
     $(`<link rel=stylesheet href=${import.meta.resolve('./scent.css')}>`)
       .on('load', () => oldStyle.remove()))
+}
+
+// Return class string as-is if a neededClass was found, or with the first
+// neededClass appended if no neededClass was found.
+function ensureClass(classStr = '', neededStr = '') {
+  const trimsplit = x => (x = x.trim(), x ? x.split(/\s+/) : [])
+  const classes = trimsplit( classStr)
+  const needed  = trimsplit(neededStr)
+  const [first] = needed
+  return [
+    ...classes,
+    ...classes.some(x => needed.includes(x)) ? [] : [first],
+  ].join(' ')
+}
+
+function pageMain() {
+  window.$ = $                                 // for use in browser console
 
   // Get & process markdown.
   const [textarea] = $('textarea')
@@ -61,17 +79,19 @@ function pageMain() {
 
   // Set some metadata defaults.
   const meta = (meta => ({
-    class   :              'book',          //   indent mode
     lang    :              'en-GB',         //   (UK locale has '1 May 2025'
     title   :              '[NO TITLE]',    //     instead of 'May 1, 2025')
     created : meta.date ?? '',
     years   : uniq([meta.created, meta.updated]
                    .flatMap(x => /\b[0-9]{4}\b/.exec(x) ?? [])).join('–'),
     ...meta,
+    // Add 'book' unless indent class already present.
+    class   : ensureClass(meta.class, 'book hanging blank')
   }))(baremark.meta)                           // read from markdown
 
   $('html')
-    .attr({ lang: meta.lang, class: meta.class })
+    .attr({ lang: meta.lang })
+    .addClass(meta.class)
     .append('<input id=darkmode type=checkbox>')
     .addClass(/\bDEBUG\b/i.test(location.search) ? 'DEBUG' : '')
 
