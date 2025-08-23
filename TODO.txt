@@ -42,9 +42,9 @@
   --quart-rem = 5px
   --eight-rem = 3px
 
-  The following shell command lists all used 'rem' values used in 'main.css':
+  The following shell command lists all used 'rem' values used in 'scent.css':
 
-    <main.css R 's#<svg\b.*</svg>##g' G -o '[0-9.]+rem' U -c S -nk2
+    <scent.css R 's#<svg\b.*</svg>##g' G -o '[0-9.]+rem' U -c S -nk2
 
   This works in my customized Zsh, with the following global aliases in effect:
 
@@ -190,4 +190,7 @@
     https://codersblock.com/blog/anchor-links-and-how-to-make-them-awesome/
 ** DONE Dispatched 'scent:done' event on finishing
    CLOSED: [2025-08-23 Sat 18:25]
+** DONE Renamed files: `main.js` -> `scent.js`, `main.css` -> `scent.css`
+   CLOSED: [2025-08-23 Sat 00:00]
+   Also added compatibility symlinks (for now).
 * [eof]

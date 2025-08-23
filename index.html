@@ -2,7 +2,7 @@
 <link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-07-09T19:21:15+02:00
+Updated: 2025-08-23T18:42+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Favicon: /www/favicon.svg
 Author: zrajm
@@ -49,7 +49,7 @@ line is to invoke a Javascript incantation that allows your machine friend to
 produce a pretty document for you:
 
 ```
-&lt;/textarea><script type=module src=www/main.js></script>
+&lt;/textarea><script type=module src=www/scent.js></script>
 ```
 
 But the meat of the file? Yeah, that's ... *different.*
@@ -85,7 +85,7 @@ own:
 * [Elemental]---For DOM manipulation (replacing Jquery).
 * [Quotecurl]---For pretty quotes and dashes.
 
-The script [`main.js`](main.js) ties it all together.
+The script [`scent.js`](scent.js) ties it all together.
 
 
 ## Baremark → HTML
@@ -193,15 +193,15 @@ Document Outline Algorithm]").
   available. Its only job is to render the raw Markdown fairly readable, and to
   display a "No Javascipt" warning. (This stylesheet is unloaded as soon as
   Javascript is up and running.)
-* [`main.css`](main.css)---A stylesheet for rendering HTML elements. It
+* [`scent.css`](scent.css)---A stylesheet for rendering HTML elements. It
   should be minimal, but also mobile friendly, and be able to handle dark mode,
   plus all standard HTML tags. It should also be pretty. :)
 
 
 ## CSS Reset
 
-My `main.css` file starts with Matt Smith's [CSS reset for minimalists], with a
-tiny tweak.
+My `scent.css` file starts with Matt Smith's [CSS reset for minimalists], with
+a tiny tweak.
 
 ```
 html { box-sizing: border-box }
@@ -415,5 +415,5 @@ page:
 [uncomment]: /baremark/?addon/uncomment.md "uncomment Docs"
 [zrajm.org]: /
 
-</textarea><script type=module src=main.js></script>
+</textarea><script type=module src=scent.js></script>
 <!--[eof]-->
