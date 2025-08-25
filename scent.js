@@ -84,6 +84,7 @@ function pageMain() {
     created : meta.date ?? '',
     years   : uniq([meta.created, meta.updated]
                    .flatMap(x => /\b[0-9]{4}\b/.exec(x) ?? [])).join('–'),
+    favicon : '/favicon.svg',
     ...meta,
     // Add 'book' unless indent class already present.
     class   : ensureClass(meta.class, 'book hanging blank')
