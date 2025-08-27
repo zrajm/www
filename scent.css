@@ -208,17 +208,19 @@ table {
   &::-webkit-scrollbar-track { border: 0; background: transparent;  }
   &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track:vertical { display: none; }
 }
-/* Scroll shadows. */
-/* lea.verou.me/2012/04/background-attachment-local */
-pre { min-width: 100%; width: fit-content; } /* fill width, if bigger: center */
 pre, table {
-  overflow: auto hidden;
+  /* Centering. */
+  display: block;
+  &:is(pre) { min-width: 100% } /* code block = full width */
+  width: fit-content;
   max-width: calc(100vw - 1rem);
-  margin-left: 50%; transform: translateX(-50%); /* center */
+  margin-left: 50%; transform: translateX(-50%);
+
+  /* Scroll & scroll shadows. */
+  overflow: auto hidden;
   scrollbar-color: #aaa transparent;
   @include customWebkitScrollbarHorizontal;
   -webkit-overflow-scrolling: touch;
-  /* First two gradients are fixed shadow that covers second two shadows. */
   background:
     no-repeat linear-gradient(90deg, var(--codebg), transparent  ) local  top  left/70px 100%,
     no-repeat linear-gradient(90deg, transparent,   var(--codebg)) local  top right/70px 100%,
@@ -227,8 +229,6 @@ pre, table {
     var(--codebg);
 }
 table {
-  display: block;
-  width: fit-content;
   background:
     no-repeat linear-gradient(90deg, var(--pagebg), transparent  ) local  top  left/70px 100%,
     no-repeat linear-gradient(90deg, transparent,   var(--pagebg)) local  top right/70px 100%,
