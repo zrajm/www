@@ -150,6 +150,7 @@ a.img:hover:before, a:not(.img):hover {
   scroll-margin-top: calc(var(--leading) * .75rem);
 }
 :target:before {
+  max-width: none;
   inset: -1rem;
   box-shadow: 0 0 .75rem #fb4b inset, 0 0 1.5rem #fb4b inset;
   background: #fb44;
@@ -167,6 +168,7 @@ td.onelink, th.onelink {
   /* So that hover or click on cell, does same on link. */
   & a:before {
     /* -3px = rounded -.125rem (= 2.5px) */
+    max-width: none;
     position: absolute; inset: -3px -.25rem; border-radius: .125rem;
     content: '';
     transition: box-shadow .2s ease-in-out, background-color .1s ease-in-out;
