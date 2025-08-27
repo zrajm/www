@@ -250,7 +250,7 @@ button {
 figure {
   text-align: center;
   border: var(--line-width) solid var(--linefg);
-  width: fit-content;
+  width: max-content;
   padding: .5rem;
 }
 hr {
