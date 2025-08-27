@@ -19,6 +19,8 @@ html {
   --pagefg: #000;
   --pagebg: #fff;
   --codebg: #eee;
+  --shadow-width: 12px; /* scroll shadow */
+  --shadow-color: #666a;
   scroll-behavior: smooth;
   /* CSS-only darkmode. */
   transition: background-color .1s ease-in, color .1s ease-in;
@@ -208,6 +210,8 @@ table {
   &::-webkit-scrollbar-track { border: 0; background: transparent;  }
   &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-track:vertical { display: none; }
 }
+pre   { --shadowbg: var(--codebg); }
+table { --shadowbg: var(--pagebg); }
 pre, table {
   /* Centering. */
   display: block;
@@ -221,20 +225,19 @@ pre, table {
   scrollbar-color: #aaa transparent;
   @include customWebkitScrollbarHorizontal;
   -webkit-overflow-scrolling: touch;
-  background:
-    no-repeat linear-gradient(90deg, var(--codebg), transparent  ) local  top  left/70px 100%,
-    no-repeat linear-gradient(90deg, transparent,   var(--codebg)) local  top right/70px 100%,
-    no-repeat linear-gradient(90deg, #8886,         transparent  ) scroll top  left/20px 100%,
-    no-repeat linear-gradient(90deg, transparent,   #8886        ) scroll top right/20px 100%,
-    var(--codebg);
-}
-table {
-  background:
-    no-repeat linear-gradient(90deg, var(--pagebg), transparent  ) local  top  left/70px 100%,
-    no-repeat linear-gradient(90deg, transparent,   var(--pagebg)) local  top right/70px 100%,
-    no-repeat linear-gradient(90deg, #8886,         transparent  ) scroll top  left/20px 100%,
-    no-repeat linear-gradient(90deg, transparent,   #8886        ) scroll top right/20px 100%,
-    var(--pagebg);
+  background-image:
+    linear-gradient(to right, var(--shadowbg) var(--shadow-width), #0000),
+    linear-gradient(to left, var(--shadowbg) var(--shadow-width), #0000),
+    radial-gradient(farthest-side at 20% 50%, var(--shadow-color), #0000),
+    radial-gradient(farthest-side at 80% 50%, var(--shadow-color), #0000);
+  background-position: top left, top right, center left, center right;
+  background-size:
+    calc(var(--shadow-width) * 2) 100%,
+    calc(var(--shadow-width) * 2) 100%,
+    var(--shadow-width) 100%,
+    var(--shadow-width) 100%;
+  background-attachment: local, local, scroll, scroll;
+  background-repeat: no-repeat;
 }
 button {
   background: #66f;

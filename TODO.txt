@@ -62,7 +62,7 @@
   `<li>` tags as well?
 * TODO Git commit hook verifying that date of 'Updated' header has changed
 * TODO `quotecurl()` should be invoked on 'title' attributes too
-* [1/4] Scroll shadow
+* [2/4] Scroll shadow
 ** DONE Center table, but never overflow screen width
    CLOSED: [2025-08-27 Wed 09:00]
    Made it so that tables & code blocks both:
@@ -85,7 +85,8 @@
 
      overflow: auto hidden; /* horizontal, but never vertical scrollbars */
    }
-** TODO Make scroll shadow be fully invisible when hidden
+** DONE Make scroll shadow be fully invisible when hidden
+   CLOSED: [2025-08-27 Wed 09:53]
    Currently the shadow and the anti-shadow (that neutralizes the shadow when
    there's no more scrolling in that direction) do not completely cancel each
    other out, so that there is a 'ghost shadow' where there should be no shadow
