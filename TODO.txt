@@ -62,8 +62,30 @@
   `<li>` tags as well?
 * TODO Git commit hook verifying that date of 'Updated' header has changed
 * TODO `quotecurl()` should be invoked on 'title' attributes too
-* [0/3] Scroll shadow
-** TODO Should be fully invisible when not needed
+* [1/4] Scroll shadow
+** DONE Center table, but never overflow screen width
+   CLOSED: [2025-08-27 Wed 09:00]
+   Made it so that tables & code blocks both:
+
+   + center
+   + min-with = content width
+   + min-width = body width
+   + max-width = viewport width
+   + scrollbar if wider than viewport
+
+   But code blocks are never narrower than the page.
+
+   * { max-width: 100% }
+   pre { min-width: 100% }
+   pre, table {
+     display: block;
+     width: fit-content;
+     max-width: calc(100vw - 1rem);
+     margin-left: 50%; transform: translateX(-50%); /* center */
+
+     overflow: auto hidden; /* horizontal, but never vertical scrollbars */
+   }
+** TODO Make scroll shadow be fully invisible when hidden
    Currently the shadow and the anti-shadow (that neutralizes the shadow when
    there's no more scrolling in that direction) do not completely cancel each
    other out, so that there is a 'ghost shadow' where there should be no shadow
@@ -73,12 +95,29 @@
    transparent background, and still use scroll shadows? (A transparent
    background would play nicer with the `:target` background coloring.)
 ** TODO Gradient scroll shadow?
+   The shadow consist of one shadow (a radial-gradient) on either side which
+   stays still as the user scrolls, on top of that there's a shadow cover which
+   *does* move with the scroll. The shadow cover is twice as big as the shadow,
+   and half of it (a section of the same size as the underlying shadow) has the
+   same color as the page background and is completely opaque. (This part comes
+   to rest on top of and hide the shadow in the extreme scrolling positions.)
+   The other half of the cover is a gradient from page background color to
+   complete transparency (so that the shadow fades out before disappearing
+   completely).
+
    This article lists a live example at the end with a gradient scroll shadow,
    which looks kinda nice. Maybe adopt this?
    https://css-tricks.com/scroll-shadows-with-javascript/
 
    This Codepen in the live example used in the article above:
    https://codepen.io/mindstorm/pen/PoqxXN
+
+   CSS-only scroll shadows:
+   https://css-tricks.com/books/greatest-css-tricks/scroll-shadows/
+
+   CSS-only shadow-scrolling effect
+   https://codepen.io/evank/pen/wWbRNO
+   (this one has a nice shape to the shadow)
 * TODO Prettier scroll-to-top button?
   The button should maybe resemble the dark mode switch more?
 * TODO List should have same spacing as blockquotes

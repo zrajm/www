@@ -3,13 +3,12 @@
 
 /* allthingssmitty.com/2017/01/09/css-reset-for-minimalists */
 html { box-sizing: border-box }
-*, :before, :after { box-sizing: inherit; padding: 0; margin: 0; text-indent: 0 }
+*, :before, :after { box-sizing: inherit; padding: 0; margin: 0; text-indent: 0; max-width: 100% }
 
 /******************************************************************************/
 html {
   /* www.typotheque.com/articles/opentype_features_in_css */
   font-variant-ligatures: common-ligatures;
-  max-width: 100%;
   font: 20px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         "Helvetica Neue", Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
   padding: 0 .5rem;
@@ -211,10 +210,11 @@ table {
 }
 /* Scroll shadows. */
 /* lea.verou.me/2012/04/background-attachment-local */
+pre { min-width: 100%; width: fit-content; } /* fill width, if bigger: center */
 pre, table {
-  overflow-x: auto;
-  max-width: 100%;
-  scrollbar-gutter: stable;
+  overflow: auto hidden;
+  max-width: calc(100vw - 1rem);
+  margin-left: 50%; transform: translateX(-50%); /* center */
   scrollbar-color: #aaa transparent;
   @include customWebkitScrollbarHorizontal;
   -webkit-overflow-scrolling: touch;
