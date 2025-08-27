@@ -212,7 +212,7 @@ pre, table {
   /* Centering. */
   display: block;
   &:is(pre) { min-width: 100% } /* code block = full width */
-  width: fit-content;
+  width: max-content;
   max-width: calc(100vw - 1rem);
   margin-left: 50%; transform: translateX(-50%);
 
