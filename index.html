@@ -2,7 +2,7 @@
 <link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-08-25T09:17+02:00
+Updated: 2025-08-27T09:55+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Author: zrajm
 
@@ -201,7 +201,7 @@ Document Outline Algorithm]").
 ## CSS Reset
 
 My `scent.css` file starts with Matt Smith's [CSS reset for minimalists], with
-a tiny tweak.
+two small tweaks.
 
 ```
 html { box-sizing: border-box }
@@ -210,17 +210,25 @@ html { box-sizing: border-box }
   padding: 0;
   margin: 0;
   text-indent: 0;
+  max-width: 100%;
 }
 ```
 
 I've added a line to stop the inheritance of `text-indent`, which otherwise
-would be inserted into child *block* elements. Like this (extra space in front
-of "tatu"):
+would be inserted into child *block* elements. Like this (note the extra,
+erroneous space in front of "tatu"):
 
-<style>.dWrfp {text-indent:2em;outline:1px solid currentColor}</style> <p
+<style>.dWrfp {text-indent:2em;outline:1px solid currentColor}</style> <div
 class=dWrfp>Velut luna <span class=dWrfp
 style="display:inline-block">tatu</span> variabilis semper crescis aut
 decrescis vita detestabilis nunc obdurat et tunc curat ludo mentis aciem.</div>
+
+The `max-width` parameter above is there to ensure that no elements
+*accidentally* grow wider than the page body.---The page body width itself is
+overridden elsewhere to get a nice, readable line length, while tables and code
+blocks are overridden so that they may grow wider than the body width (though
+not wider than the viewport) to show as much as possible of their content on
+big screens.
 
 
 ## Fonts
