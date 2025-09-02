@@ -10,6 +10,19 @@
 
     <div class=hanging>
     ----------------------------------------
+* TODO Scrollbar issues on short pages
+  A page that ends above the fold should have a body that stretches to the
+  bottom of the viewport. (So that, for example, any page `<footer>` can be
+  placed at the bottom of the viewport in this case.)
+
+  Scrollbar should always be visible (so we don't get janky behavior with a
+  scrollbar being added/removed just if page content change to more/less than
+  one screenful in length.)
+* TODO Scroll-to-top overlay adds blank space below short pages         :BUG:
+  A page for which the content fit on the first screen, currently allows user
+  to scroll down (into an empty area). This is because the scroll-to-top button
+  overlay extends down below the fold, making the browser think that the page
+  content is larger than it is.
 * TODO Word-wrapping of PDF/external links icons
   Currently, when links are line-wrapped, the wrapping can occur between the
   link name and the icon that follows. This looks ugly, would it be better not
