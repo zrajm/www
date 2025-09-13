@@ -92,6 +92,9 @@ The script [`scent.js`](scent.js) ties it all together.
 [Baremark] and [Quotecurl] are used to render the Markdown into HTML, and,
 additionally, the following [Baremark Addons] are also loaded.
 
+<div class=wg9z77f>
+<style>.wg9z77f table { white-space: nowrap }</style>
+
 | See           | Description                        | Name                           |
 |---------------|------------------------------------|--------------------------------|
 |               | Turn URLs into links               | [`autolink.js`][autolink.js]   |
@@ -101,6 +104,8 @@ additionally, the following [Baremark Addons] are also loaded.
 | [Docs][table] | GFM-style tables                   | [`table.js`][table.js]         |
 | [Docs][toc]   | Table-of-contents                  | [`toc.js`][toc.js]             |
 |               | Remove HTML comments               | [`uncomment.js`][uncomment.js] |
+
+</div>
 
 When the main script is done, a `scent:done` event is fired. Javascript that
 you want to run after this may be invoked from an event listener, like so:
