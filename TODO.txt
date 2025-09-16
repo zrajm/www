@@ -23,10 +23,6 @@
   to scroll down (into an empty area). This is because the scroll-to-top button
   overlay extends down below the fold, making the browser think that the page
   content is larger than it is.
-* TODO Word-wrapping of PDF/external links icons
-  Currently, when links are line-wrapped, the wrapping can occur between the
-  link name and the icon that follows. This looks ugly, would it be better not
-  to allow that?
 * TODO CSS: 'rem' units give rounding errors
   There are rounding errors which makes stuff look irregular/ugly sometimes in
   Firefox (something that goes away when you zoom in). For example, the top and
@@ -259,4 +255,9 @@
     CSS-only shadow-scrolling effect
     https://codepen.io/evank/pen/wWbRNO
     (this one has a nice shape to the shadow)
+* DONE Word-wrapping of PDF/external links icons
+  CLOSED: [2025-09-16 Tue 06:03]
+  Currently, when links are line-wrapped, the wrapping can occur between the
+  link name and the icon that follows. This looks ugly, would it be better not
+  to allow that?
 * [eof]

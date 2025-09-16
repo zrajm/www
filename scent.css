@@ -126,6 +126,7 @@ a {
     margin-left: .125rem;
     vertical-align: super;
     font-size: 0;
+    white-space: nowrap;
   }
   &[href^="http"]:after { content: url(icon-ext.svg) }
   &[href$=".pdf"]:after { content: url(icon-pdf.png) }
