@@ -85,12 +85,6 @@
   The origin of various little tricks are given in CSS comments, but they
   should be in the docs file.
 * TODO Test/verify Chrome scrollbar
-* TODO References to `.img` in CSS?
-  Possibly replace with `:has(img:only-child)`? Nope, won't work. `:only-child`
-  matches as long as it is the only subelement, however, other text does not
-  affect the match.
-
-  E.g. `<td>lext <a href="...">link</a</td>` would be matched by td `a:only-link`.
 * TODO Verify completeness of docs, add any missing stuff
 * FINISHED
 ** DONE Weed out vertical rhythm stuff
@@ -250,15 +244,20 @@
     CSS-only shadow-scrolling effect
     https://codepen.io/evank/pen/wWbRNO
     (this one has a nice shape to the shadow)
-* DONE Scroll-to-top overlay adds blank space below short pages         :BUG:
-  CLOSED: [2025-09-19 Fri 08:25]
-  A page for which the content fit on the first screen, currently allows user
-  to scroll down (into an empty area). This is because the scroll-to-top button
-  overlay extends down below the fold, making the browser think that the page
-  content is larger than it is.
-* DONE Word-wrapping of PDF/external links icons
-  CLOSED: [2025-09-16 Tue 06:03]
-  Currently, when links are line-wrapped, the wrapping can occur between the
-  link name and the icon that follows. This looks ugly, would it be better not
-  to allow that?
+** DONE Scroll-to-top overlay adds blank space below short pages        :BUG:
+   CLOSED: [2025-09-19 Fri 08:25]
+   A page for which the content fit on the first screen, currently allows user
+   to scroll down (into an empty area). This is because the scroll-to-top
+   button overlay extends down below the fold, making the browser think that
+   the page content is larger than it is.
+** DONE Word-wrapping of PDF/external links icons
+   CLOSED: [2025-09-16 Tue 06:03]
+   Currently, when links are line-wrapped, the wrapping can occur between the
+   link name and the icon that follows. This looks ugly, would it be better not
+   to allow that?
+** DONE Weed out old references to `a.img` in CSS
+   CLOSED: [2025-09-20 Sat 00:24]
+   The `a.img` stuff in `scent.css` is an remnant from when this CSS was used
+   for my 'Toki Pona Syllabics' page (https://zrajm.org/toki-pona-syllabics).
+   It is no longer needed and should be cleared away from the CSS.
 * [eof]

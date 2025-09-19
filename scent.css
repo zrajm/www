@@ -131,19 +131,13 @@ a {
   &[href^="http"]:after { content: url(icon-ext.svg) }
   &[href$=".pdf"]:after { content: url(icon-pdf.png) }
 }
-a.img { display: inline-block }
-a.img { position: relative }
-a.img img { display: block }
-a.img:hover:before, :target:before {
+:target:before {
   content: ' ';
   position: absolute;
   left: -.25rem; right: -.25rem;
   border-radius: .125rem;
 }
-a.img:hover:before {
-  top: -.35rem; bottom: -.25rem;
-}
-a.img:hover:before, a:not(.img):hover {
+a:hover {
   box-shadow: 0 0 .75rem #88f7 inset, 0 0 1.5rem #88f7 inset;
   background: #88f1;
 }
