@@ -38,7 +38,7 @@ function addScrollToTopButton() {
   })
   const [fold] = $('<div>').css({
     position: 'absolute',
-    inset: '0 0 -25% 0',  // 1st screenful + 25% extra downwards
+    inset: '0',  // 1st screenful
     zIndex: '-9999',
     pointerEvents: 'none',
   })

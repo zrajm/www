@@ -18,11 +18,6 @@
   Scrollbar should always be visible (so we don't get janky behavior with a
   scrollbar being added/removed just if page content change to more/less than
   one screenful in length.)
-* TODO Scroll-to-top overlay adds blank space below short pages         :BUG:
-  A page for which the content fit on the first screen, currently allows user
-  to scroll down (into an empty area). This is because the scroll-to-top button
-  overlay extends down below the fold, making the browser think that the page
-  content is larger than it is.
 * TODO CSS: 'rem' units give rounding errors
   There are rounding errors which makes stuff look irregular/ugly sometimes in
   Firefox (something that goes away when you zoom in). For example, the top and
@@ -255,6 +250,12 @@
     CSS-only shadow-scrolling effect
     https://codepen.io/evank/pen/wWbRNO
     (this one has a nice shape to the shadow)
+* DONE Scroll-to-top overlay adds blank space below short pages         :BUG:
+  CLOSED: [2025-09-19 Fri 08:25]
+  A page for which the content fit on the first screen, currently allows user
+  to scroll down (into an empty area). This is because the scroll-to-top button
+  overlay extends down below the fold, making the browser think that the page
+  content is larger than it is.
 * DONE Word-wrapping of PDF/external links icons
   CLOSED: [2025-09-16 Tue 06:03]
   Currently, when links are line-wrapped, the wrapping can occur between the
