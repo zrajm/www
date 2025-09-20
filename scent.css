@@ -17,6 +17,7 @@ html {
   --leading: 1.75;
   --linefg: #888a; /* for lines: <hr>, <table> etc. */
   --line-width: 1px;
+  --darkmode: 0;
   --pagefg: #000;
   --pagebg: #fff;
   --codebg: #eee;
@@ -27,6 +28,7 @@ html {
   transition: background-color .1s ease-in, color .1s ease-in;
   @media (prefers-color-scheme: light) { /* lightmode, but darkmode checked */
     &:has(#darkmode:checked) {
+      --darkmode: 1;
       --pagebg: #111;
       --pagefg: #fff;
       --codebg: #333;
@@ -35,6 +37,7 @@ html {
   }
   @media (prefers-color-scheme: dark) { /* darkmode (and darkmode unchecked) */
     &:not(:has(#darkmode:checked)) {
+      --darkmode: 1;
       --pagebg: #111;
       --pagefg: #fff;
       --codebg: #333;
@@ -92,7 +95,20 @@ blockquote {
   border-left: calc(var(--indent) - .75rem) solid #8885;
   padding: 0 .75rem;
 }
-img, pre, tt {
+img {
+  &:where([src$=".jpg"i], [src*=".jpg?"i]),
+  &[src$="?darkmode=no"i], &[src*="?darkmode=no&"i],
+  &[src$="&darkmode=no"i], &[src*="&darkmode=no&"i] {
+    --darkmode-invert: 0;
+  }
+  &:where([src$=".png"i], [src*=".png?"i],[src$=".svg"i], [src*=".svg?"i]),
+  &[src$="?darkmode=yes"i], &[src*="?darkmode=yes&"i],
+  &[src$="&darkmode=yes"i], &[src*="&darkmode=yes&"i] {
+    --darkmode-invert: calc(1 * var(--darkmode));
+  }
+  filter: invert(var(--darkmode-invert));
+}
+pre, tt {
   background: var(--codebg);
   border: 1px solid #8885;
   border-radius: .125rem;

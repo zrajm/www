@@ -2,7 +2,7 @@
 <link rel=stylesheet href=nojs.css><textarea disabled>
 
 Created: 2025-06-10T23:39:04+02:00
-Updated: 2025-08-27T09:55+02:00
+Updated: 2025-09-20T04:33+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Author: zrajm
 
@@ -389,6 +389,25 @@ page:
 
 ```
 <input id=darkmode type=checkbox>
+```
+
+
+## Dark Mode & Images
+
+Images with filenames ending in `.png` or `.svg` (formats which are usually
+used for simple black-and-white drawings, diagrams and the like) are by default
+inverted in dark mode, while `.jpg` images (which is usually used for
+full-color photos) are not. This default behavior can be overridden for
+individual images by appending a `darkmode` URL parameter to the end of the
+filename. Thus `?darkmode=no` can be used disable the dark mode color inversion
+(for an SVG or PNG), and `?darkmode=yes` to enable it (for a JPEG image).
+
+Non-photographic images are should be drawn using black lines on transparent
+(or white) background.
+
+```
+![Diagram](diagram.svg?darkmode=no)  # SVG without dark mode inversion
+![Photo](photo.jpg?darkmode=yes)     # JPEG with dark mode inversion
 ```
 
 -------------------------------------------------------------------------------
