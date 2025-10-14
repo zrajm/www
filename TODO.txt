@@ -1,5 +1,19 @@
 -*- org -*-
 
+* TODO Use `rlh` (root-line-height) unit to simplify CSS
+* TODO Monospace font
+  Want something that allows for all characters on the webpage. At minimum:
+  Emoji, country flags, Latin, Cyrillic & Syllabics.
+
+  Noto Mono, JetBrains Mono, DejaVu Mono,
+  Cascadia Mono, Fira Code, Noto Sans Mono, Consolas
+
+  This article has some suggestions:
+  https://betterwebtype.com/5-monospaced-fonts-with-coding-ligatures/ (Commit
+  Mono seems cool in that it does KERNING to adjust some awkward character
+  pairings!)
+
+  https://commitmono.com/
 * TODO CSS only scroll-to-top button?
 * TODO Incorrect indent in some cases                                   :BUG:
   Given two <div>s on the same level, the 'hanging' class affects both of them,
