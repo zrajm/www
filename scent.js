@@ -48,12 +48,12 @@ function addScrollToTopButton() {
   }).observe(fold)
 }
 
-// Load stylesheet, remove old when new has loaded.
+// Load stylesheet, remove old when page is fully loaded.
 function replaceCSS() {
   const oldStyle = $('link[rel="stylesheet"]')
   $('head').append(
-    $(`<link rel=stylesheet href=${import.meta.resolve('./scent.css')}>`)
-      .on('load', () => oldStyle.remove()))
+    $(`<link rel=stylesheet href=${import.meta.resolve('./scent.css')}>`))
+  $(document).on('scent:done', () => oldStyle.remove())
 }
 
 // Return class string as-is if a neededClass was found, or with the first

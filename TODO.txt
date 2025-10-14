@@ -1,5 +1,6 @@
 -*- org -*-
 
+* TODO CSS only scroll-to-top button?
 * TODO Incorrect indent in some cases                                   :BUG:
   Given two <div>s on the same level, the 'hanging' class affects both of them,
   even though it should only affect the latter. There's something fishy about
@@ -260,4 +261,6 @@
    The `a.img` stuff in `scent.css` is an remnant from when this CSS was used
    for my 'Toki Pona Syllabics' page (https://zrajm.org/toki-pona-syllabics).
    It is no longer needed and should be cleared away from the CSS.
+** DONE Pretty Markdown code while loading main CSS
+   CLOSED: [2025-10-14 Tue 15:15]
 * [eof]
