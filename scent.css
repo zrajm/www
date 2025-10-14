@@ -73,7 +73,7 @@ sub, sup, a[href^="#fn"] {
 ul { list-style-type: "⚫︎ " }
 /** Table-of-Contents **/
 ul.toc {
-  & :where(a) { color: inherit; text-decoration: none }
+  & a[href^="#"] { color: inherit; text-decoration: none }
   & ul, & { list-style: none }
   & ul { margin-top: 0; margin-bottom: 0 }
   margin: 0;
@@ -121,7 +121,7 @@ pre, tt {
 pre { padding: .25rem; }
 h1, h2, h3 { margin-top: 1em }
 h1, h2, h3, h4, h5, h6 {
-  & a { color: inherit; text-decoration: none }
+  & a[href^="#"] { color: inherit; text-decoration: none }
   & a[href^="#"]:hover:before {
     color: var(--linefg);
     content: '#';
@@ -155,6 +155,7 @@ a {
   border-radius: .125rem;
 }
 a:hover {
+  text-decoration: underline !important;
   box-shadow: 0 0 .75rem #88f7 inset, 0 0 1.5rem #88f7 inset;
   background: #88f1;
 }
@@ -195,7 +196,6 @@ td.onelink, th.onelink {
   }
 }
 
-a:hover { text-decoration: underline }
 /** Tables **/
 /* All borders are on <td> (for scroll shadows to work), and  */
 /* non-overlapping (for the half transparent colors to work). */
