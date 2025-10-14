@@ -148,12 +148,6 @@ a {
   &[href^="http"]:after { content: url(icon-ext.svg) }
   &[href$=".pdf"]:after { content: url(icon-pdf.png) }
 }
-:target:before {
-  content: ' ';
-  position: absolute;
-  left: -.25rem; right: -.25rem;
-  border-radius: .125rem;
-}
 a:hover {
   text-decoration: underline !important;
   box-shadow: 0 0 .75rem #88f7 inset, 0 0 1.5rem #88f7 inset;
@@ -164,13 +158,13 @@ a:hover {
   scroll-margin-top: calc(var(--leading) * .75rem);
 }
 :target:before {
+  content: '';
+  position: absolute;
   max-width: none;
-  inset: -1rem;
-  box-shadow: 0 0 .75rem #fb4b inset, 0 0 1.5rem #fb4b inset;
-  background: #fb44;
+  inset: calc(var(--leading) * -.25rem) calc(var(--indent) * -1);
+  box-shadow: 0 0 .75rem #aaa6, 0 0 1.5rem #aaa6;
   z-index: -1;
   pointer-events: none;
-  opacity: .5;
   border-radius: .25rem;
 }
 td, th { padding: 0 .25em }
