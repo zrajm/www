@@ -194,23 +194,8 @@ td.onelink, th.onelink {
 /* All borders are on <td> (for scroll shadows to work), and  */
 /* non-overlapping (for the half transparent colors to work). */
 table {
-  border-spacing: 0;
-  td, th {
-    border: 0 solid var(--linefg);
-    border-top-width: var(--line-width);
-    border-right-width: var(--line-width);
-    &:first-of-type {
-      border-left-width: var(--line-width);
-    }
-  }
-  &:has(     > tfoot ) tfoot,
-  &:not(:has(> tfoot)) tbody {
-    &:last-of-type > tr:last-of-type {
-      td, th {
-        border-bottom-width: var(--line-width);
-      }
-    }
-  }
+  border-collapse: collapse;
+  td, th { border: var(--line-width) solid var(--linefg) }
 }
 /* Always show scrollbar in webkit browsers. */
 @mixin customWebkitScrollbarHorizontal {
