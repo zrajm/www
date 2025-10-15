@@ -285,6 +285,7 @@ hr {
     transform: translateY(calc(-.775em + (var(--line-width) / 2)));
   }
 }
+label { cursor: pointer }
 /** Checkbox **/
 input[type="checkbox"] {
   opacity: .5;
