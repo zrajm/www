@@ -273,6 +273,10 @@ hr {
 label { cursor: pointer }
 /** Checkbox **/
 input[type="checkbox"] {
+  font: inherit;
+  cursor: pointer;
+}
+input[type="checkbox"].onoff, input[type="checkbox"]#darkmode {
   opacity: .5;
   transition: opacity ease-in-out .1s;
   &:hover { opacity: 1 }
@@ -304,8 +308,6 @@ input[type="checkbox"] {
   appearance: none;
   display: inline-block; height: var(--unit); width: calc(var(--unit) * 1.75);
   position: relative; vertical-align: middle; bottom: .1em;
-  cursor: pointer;
-  font-size: inherit;
   &#darkmode {
     position: fixed; top: 0; right: 0; margin: 1rem;
     --sun: url('data:image/svg+xml,<svg width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="3.5"/><path d="M10 2.5V5m0 10v2.5m5.3-12.8-1.8 1.8m-7 7-1.8 1.8M17.5 10H15M5 10H2.5m2.2-5.3 1.8 1.8m7 7 1.8 1.8" stroke="%23000" stroke-width="1.5px"/></svg>');

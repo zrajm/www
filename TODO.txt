@@ -1,5 +1,16 @@
 -*- org -*-
 
+* [0/8] CSS for form elements
+  All clicky elements should have `cursor: pointer` (but maybe not
+  text-entering ones?).
+** TODO <button>...</button>
+** TODO <fieldset>...</fieldset>
+** TODO <form>...</form>
+** TODO <input type="...">
+** TODO <label>...</label>
+** TODO <legend>...</legend>
+** TODO <textarea>...</textarea>
+** TODO moar?
 * TODO Use `rlh` (root-line-height) unit to simplify CSS
 * TODO Monospace font
   Want something that allows for all characters on the webpage. At minimum:
