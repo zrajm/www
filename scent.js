@@ -1,20 +1,20 @@
 /*-*- js-indent-level: 2 -*-*/
 // Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code).
 
-import { $ } from './elemental/elemental.mjs'
-import { quotecurl } from './quotecurl/quotecurl.mjs'
+import { $ } from '/elemental/elemental.mjs'
+import { quotecurl } from '/quotecurl/quotecurl.mjs'
 
 // Load Baremark modules (in order).
 // FIXME: Strictly sequential loading of modules is inefficient. Fix?
 importFiles(
   replaceCSS,
   addScrollToTopButton,
-  './baremark/addon/table.js',
-  './baremark/addon/sup.js',
-  './baremark/addon/autolink.js',
-  './baremark/addon/id.js',                    // '[#…]' BEFORE toc & metadata
-  './baremark/addon/meta.js',
-  './baremark/addon/toc.js',
+  '/baremark/addon/table.js',
+  '/baremark/addon/sup.js',
+  '/baremark/addon/autolink.js',
+  '/baremark/addon/id.js',                     // '[#…]' BEFORE toc & metadata
+  '/baremark/addon/meta.js',
+  '/baremark/addon/toc.js',
   pageMain)
 
 /******************************************************************************/

@@ -1,9 +1,0 @@
-[submodule "elemental"]
-	path = elemental
-	url = git@github.com:zrajm/elemental
-[submodule "baremark"]
-	path = baremark
-	url = git@github.com:zrajm/baremark
-[submodule "quotecurl"]
-	path = quotecurl
-	url = git@github.com:zrajm/quotecurl
