@@ -110,7 +110,6 @@ img {
   filter: invert(var(--darkmode-invert));
 }
 pre, tt {
-  background: var(--codebg);
   border: 1px solid #8885;
   border-radius: .125rem;
   padding: 0 .0625em;
@@ -232,6 +231,7 @@ pre, table {
     var(--shadow-width) 100%;
   background-attachment: local, local, scroll, scroll;
   background-repeat: no-repeat;
+  background-color: var(--shadowbg);
 }
 button {
   background: #66f;
