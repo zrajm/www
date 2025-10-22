@@ -156,6 +156,7 @@ a:hover {
   position: relative;
   scroll-margin-top: calc(var(--leading) * .75rem);
 }
+:target { table, pre { box-shadow: 0 0 .75rem #aaa6, 0 0 1.5rem #aaa6 } }
 :target:before {
   content: '';
   position: absolute;
