@@ -21,9 +21,9 @@ importFiles(
 
 // Scroll-to-top button (shown below fold).
 function addScrollToTopButton() {
-  const [btn] = $(`<a href=#><svg width="24" height="24">
-    <path fill="none" stroke="#fff" stroke-linecap="round"
-      stroke-linejoin="round" stroke-width="2" d="m18 15-6-6-6 6"/></svg></a>`
+  const [btn] = $(
+    `<a href=#><svg width="24" height="24" viewBox="0 0 12 12">`
+      + `<path fill="none" stroke="#fff" d="M6 12V3M2 7l4-4 4 4"/></svg></a>`
   ).css({
     position: 'fixed',
     bottom: '-60px',

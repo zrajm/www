@@ -101,8 +101,6 @@
 * TODO Some images have weird background colors
   http://zrajm.devel/sign-language-writing/#asl-phabet
 * TODO Center images with same technique as code blocks & tables?
-* TODO Prettier scroll-to-top button?
-  The button should maybe resemble the dark mode switch more?
 * TODO List should have same spacing as blockquotes
   Numbered and bulleted lists should have the number/bullet have the same
   horizontal spacing as the left (colored) border of the blockquote.
@@ -288,4 +286,6 @@
    It is no longer needed and should be cleared away from the CSS.
 ** DONE Pretty Markdown code while loading main CSS
    CLOSED: [2025-10-14 Tue 15:15]
+** DONE Scroll-to-top button now use an arrow as icon
+   CLOSED: [2025-10-22 Wed 22:56]
 * [eof]
