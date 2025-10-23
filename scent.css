@@ -139,13 +139,25 @@ a {
   -webkit-box-decoration-break: clone;
   transition: box-shadow .2s ease-in-out, background-color .1s ease-in-out;
   &:after {
-    margin-left: .125rem;
     vertical-align: super;
     font-size: 0;
     white-space: nowrap;
   }
-  &[href^="http"]:after { content: url(icon-ext.svg) }
-  &[href$=".pdf"]:after { content: url(icon-pdf.png) }
+  &:is([href^="//"], [href^="http"i]):not([href$=".pdf"]):after {
+    content: '';
+    display: inline-block; width: 10px; height: 12px;
+    background: currentColor;
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" \
+      viewBox="0 0 10 12"><path fill="none" stroke="white" stroke-width="1.8" \
+      d="m1 10 7-7M1 3h7v7"/></svg>');
+  }
+  &[href$=".pdf"]:after {
+    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAA\
+      AoLQ9TAAAAElBMVEUAAAD////VKif1ysrqlZMAAACtFdr4AAAABnRSTlP//////wCzv6S/AA\
+      AARklEQVQoU23OSwoAIAhFUa3c/5bz+SkFrzg5SERCmVgK7IVUMGkA6aDyAQFWD8C8dY8uB7\
+      ypFxiIX+RVBbyR0Br+MUBN5AIEoAHY3CIikgAAAABJRU5ErkJggg==');
+    margin-left: 1px;
+  }
 }
 a:hover {
   text-decoration: underline !important;
