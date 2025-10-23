@@ -42,7 +42,7 @@ function addScrollToTopButton() {
     zIndex: '-9999',
     pointerEvents: 'none',
   })
-  $(document.body).append(fold, btn)
+  $('body').append(fold, btn)
   new IntersectionObserver(([fold]) => {
     btn.style.bottom = fold.isIntersecting ? '-60px' : '20px'
   }).observe(fold)
@@ -51,8 +51,8 @@ function addScrollToTopButton() {
 // Load stylesheet, remove old when page is fully loaded.
 function replaceCSS() {
   const oldStyle = $('link[rel="stylesheet"]')
-  $('head').append(
-    $(`<link rel=stylesheet href=${import.meta.resolve('./scent.css')}>`))
+  $('head')
+    .append(`<link rel=stylesheet href=${import.meta.resolve('./scent.css')}>`)
   $(document).on('scent:done', () => oldStyle.remove())
 }
 
