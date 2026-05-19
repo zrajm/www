@@ -110,6 +110,9 @@
   should be in the docs file.
 * TODO Test/verify Chrome scrollbar
 * TODO Verify completeness of docs, add any missing stuff
+* TODO Improve CSS reset?
+  This could be good inspiration:
+  https://chriscoyier.net/2023/10/03/being-picky-about-a-css-reset-for-fun-pleasure/
 * FINISHED
 ** DONE Weed out vertical rhythm stuff
    CLOSED: [2025-06-12 Thu 11:06]
