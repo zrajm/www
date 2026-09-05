@@ -120,6 +120,7 @@ pre, tt {
 pre { padding: .25rem; }
 h1, h2, h3 { margin-top: 1em }
 h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
   & a[href^="#"] { color: inherit; text-decoration: none }
   & a[href^="#"]:hover:before {
     color: var(--linefg);
