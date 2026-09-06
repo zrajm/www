@@ -276,6 +276,7 @@ hr {
     var(--linefg) calc(50% + (var(--break) / 2)),
     var(--linefg));
   color: var(--linefg);
+  &.mini { background: none }
   &:before {
     display: block;
     text-align: center;
