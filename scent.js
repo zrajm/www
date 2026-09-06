@@ -73,8 +73,8 @@ function pageMain() {
   window.$ = $                                 // for use in browser console
 
   // Get & process markdown.
-  const [textarea] = $('textarea')
-  const htmlContent = baremark(textarea?.value ?? '')
+  const [textarea] = $('xmp,plaintext,textarea')
+  const htmlContent = baremark(textarea?.value ?? textarea?.textContent ?? '')
     .replace(/\b(FIXME|TODO)\b/g, '<mark>$1</mark>')
 
   // Set some metadata defaults.
@@ -98,7 +98,7 @@ function pageMain() {
 
   $('head').append(htmlMeta(meta))             // get & add metadata to <head>
 
-  // Replace <textarea> with page content.
+  // Replace Markdouwn source element with the HTML output.
   textarea.outerHTML = '<main>' + htmlTitle(meta) + htmlContent + '</main>'
     + htmlFooter(meta)
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
-<link rel=stylesheet href=nojs.css><textarea disabled>
+<link rel=stylesheet href=nojs.css><xmp>
 
-Created: 2025-06-10T23:39:04+02:00
-Updated: 2026-05-19T15:28:56+02:00
+Created: 2025-06-10 23:39:04+02:00
+Updated: 2026-09-06 19:33:36+02:00
 License: CC BY-NC-SA (text), GPLv2 (code).
 Author: zrajm
 
@@ -36,19 +36,19 @@ pandas can dig it up.
 
 The file into which I write these words smells like HTML---it has an `.html`
 file extension, and contains *juust enough* HTML-smelling preamble to convince
-your browser that it can be loaded:
+your browser that it can be loaded:[1](#fn-pb1)
 
-```
+```html
 <!DOCTYPE html><meta charset=utf-8><!--*- markdown -*-->
-<link rel=stylesheet href=www/nojs.css><textarea disabled>
+<link rel=stylesheet href=www/nojs.css><xmp>
 ```
 
 At the very end you'll also find a little chunk of line noise. The task of this
 line is to invoke a Javascript incantation that allows your machine friend to
-produce a pretty document for you:
+produce a pretty document for you:[2](#fn-yaz)
 
-```
-&lt;/textarea><script type=module src=www/scent.js></script>
+```html
+<​/xmp><script type=module src=www/scent.js></script>
 ```
 
 But the meat of the file? Yeah, that's ... *different.*
@@ -110,7 +110,7 @@ additionally, the following [Baremark Addons] are also loaded.
 When the main script is done, a `scent:done` event is fired. Javascript that
 you want to run after this may be invoked from an event listener, like so:
 
-```
+```js
 document.addEventListener('scent:done', () => {
   // run after Markdown → HTML has finished
 })
@@ -208,7 +208,7 @@ Document Outline Algorithm]").
 My `scent.css` file starts with Matt Smith's [CSS reset for minimalists], with
 two small tweaks.
 
-```
+```css
 html { box-sizing: border-box }
 *, :before, :after {
   box-sizing: inherit;
@@ -357,7 +357,7 @@ this CSS. If you want to add a dark mode override switch (allowing the user to
 manually switch between the modes) include the following HTML anywhere on your
 page:
 
-```
+```html
 <input id=darkmode type=checkbox>
 ```
 
@@ -367,21 +367,60 @@ page:
 Images with filenames ending in `.png` or `.svg` (formats which are usually
 used for simple black-and-white drawings, diagrams and the like) are by default
 inverted in dark mode, while `.jpg` images (which is usually used for
-full-color photos) are not. This default behavior can be overridden for
-individual images by appending a `darkmode` URL parameter to the end of the
-filename. Thus `?darkmode=no` can be used disable the dark mode color inversion
-(for an SVG or PNG), and `?darkmode=yes` to enable it (for a JPEG image).
+full-color photos) are not.
 
-Non-photographic images are should be drawn using black lines on transparent
-(or white) background.
+This default behavior can be overridden for individual images by appending a
+`darkmode` URL parameter to the end of the filename. Use `?darkmode=no` to
+disable the dark mode color inversion (for an SVG or PNG), and `?darkmode=yes`
+to enable it (for a JPEG image).
 
+Non-photographic images should be drawn using black lines on transparent (or
+white) background for best results.
+
+```markdown
+![Diagram](diagram.svg?darkmode=no) <!-- SVG without dark mode inversion -->
+![Photo](photo.jpg?darkmode=yes)    <!-- JPEG with dark mode inversion -->
 ```
-![Diagram](diagram.svg?darkmode=no)  # SVG without dark mode inversion
-![Photo](photo.jpg?darkmode=yes)     # JPEG with dark mode inversion
-```
+
+# Footnotes
+
+<div class=hanging>
+<div>[#fn-pb1]
+
+**1.** *HTML-Scented Markdown* grabs Markdown from the first occurrence of
+  `<xmp>` (which I recommend), `<plaintext>` or `<textarea>`. (The tags
+  [`<xmp>`] and [`<plaintext>`] may be deprecated, but they are still
+  *extremely* well supported by browsers.)
+
+  <p class=contd>If you use `<textarea>` as a Markdown container, then HTML
+  entities (`&...;`) are parsed and converted into characters by the browser.
+  This means that to get the string `&gt;` in your output, you'll have to write
+  it as `&amp;gt;` in your Markdown. :( HTML tags may, however, be written
+  normally (except for `</textarea>` which must be escaped, unless you want to
+  mark the end of your document). Also, use `<textarea disabled>` to not cause
+  confusion among users with Javascript disabled.
+
+  <p class=contd>If you use `<xmp>` or `<plaintext>` you can write plain
+  Markdown, without having to think about escaping. With `<xmp>`, however, the
+  end tag, <nobr>`<​/xmp>`,</nobr> *cannot occur* in the text! A workaround is
+  to insert an invisible character (e.g. zero-width space), but if used within
+  backticks or in a codeblock, literal character has to be used. This character
+  also remain in the output, and might confuse users who try to copy the text.
+  With `<plaintext>` there *is* no end tag, everything from the first
+  `<plaintext>` tag to the end of the page is included in its content.
+
+</div>
+
+[#fn-yaz] **2.** All occurrences of the string <nobr>`<​/xmp>`</nobr> on this
+  page contain an invisible non-breaking space. As a result, if you copy/paste
+  them, you might get a slightly different string than expected. (See footnote
+  [1](#fn-pb1).)
+
 
 -------------------------------------------------------------------------------
 
+[`<xmp>`]: https://caniuse.com/?search=xmp "Browser support for <xmp>"
+[`<plaintext>`]: https://caniuse.com/?search=plaintext "Browser support for <plaintext>"
 [Awesome CSS Frameworks]: https://github.com/troxler/awesome-css-frameworks
 [Baremark Addons]: /baremark/#addons
 [Baremark]: /baremark/ "Baremark"
@@ -417,5 +456,5 @@ Non-photographic images are should be drawn using black lines on transparent
 [uncomment]: /baremark/?addon/uncomment.md "uncomment Docs"
 [zrajm.org]: /
 
-</textarea><script type=module src=scent.js></script>
+</xmp><script type=module src=scent.js></script>
 <!--[eof]-->
