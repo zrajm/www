@@ -1,5 +1,5 @@
 /*-*- css-indent-offset: 2 -*-*/
-/* Copyright 2025 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code). */
+/* Copyright 2025-2026 by zrajm. Licenses: CC BY-SA (text), GPLv2 (code). */
 
 /* allthingssmitty.com/2017/01/09/css-reset-for-minimalists */
 html { box-sizing: border-box }
@@ -87,8 +87,7 @@ blockquote, footer, ol, pre, table, ul {
   margin-bottom: calc(var(--leading) * .5rem);
 }
 figure, hr {
-  margin-top   : calc(var(--leading) * 1.5rem);
-  margin-bottom: calc(var(--leading) * 1.5rem);
+  margin: calc(var(--leading) * 1.5rem) auto;
 }
 /* Indented elements. */
 blockquote, ol, ul { margin-left: var(--indent) }
