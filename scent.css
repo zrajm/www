@@ -166,19 +166,17 @@ a:hover {
   background: #88f1;
 }
 :target {
-  position: relative;
   scroll-margin-top: calc(var(--leading) * .75rem);
-}
-:target { table, pre { box-shadow: 0 0 .75rem #aaa6, 0 0 1.5rem #aaa6 } }
-:target:before {
-  content: '';
-  position: absolute;
-  max-width: none;
-  inset: calc(var(--leading) * -.25rem) calc(var(--indent) * -1);
-  box-shadow: 0 0 .75rem #aaa6, 0 0 1.5rem #aaa6;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: .25rem;
+  /* Dark border code & tables (=can be wider than main text) and :target. */
+  &, & pre, & table {
+    border-radius: .125rem; /* same as <pre> */
+    box-shadow:
+      calc(var(--leading) * -.25rem) 0 .125rem calc(var(--leading) * .125rem) var(--pagebg),
+      calc(var(--leading) *  .25rem) 0 .125rem calc(var(--leading) * .125rem) var(--pagebg);
+  }
+  /* Put dropshadow over :target + protruding code/tables. */
+  filter: drop-shadow(0 0 .75rem #88f7) drop-shadow(0 0 1.5rem #88f7);
+  background: var(--pagebg);
 }
 td, th { padding: 0 .25em }
 
